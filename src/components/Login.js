@@ -72,6 +72,7 @@ export default function Login() {
                         title: "Las credenciales ingresadas no son correctas.",
                         icon: "error"
                     })
+                    window.location.hash = '/login'
                 }
             })
             .catch(() => Swal.fire({

@@ -23,6 +23,7 @@ import HelpIcon from '@mui/icons-material/Help';
 import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import QuizIcon from '@mui/icons-material/Quiz';
 import CopyRight from './copyRight/CopyRight';
+import axios from 'axios';
 
 
 
@@ -193,19 +194,17 @@ function Rejilla() {
   })
 
   const obtenerDatos = () => {
-    let myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
 
     let requestOptions = {
       method: 'GET',
-      headers: myHeaders,
-      redirect: 'follow'
+      maxBodyLength: Infinity,
+      url: "https://json.extendsclass.com/bin/5bbeeaecdc32",
+      headers: { 'Content-Type': 'application/json' }
     };
-    fetch("https://api.myjson.online/v1/records/8eee4469-38fd-495a-a73e-34c01fb914a8", requestOptions)
-      .then((data) => data.json())      
-      .then((user) => user.data.filter(element => element.email === cookies.get('email')))      
+    axios(requestOptions)
+      .then((user) => user.data.filter(element => element.email === cookies.get('email')))
       .then(user => setUserResult(user))
-      .then(() => setIsLoading(false))
+      .then(() => setIsLoading(false))      
   }
 
 
@@ -464,14 +463,19 @@ function Rejilla() {
                       headers: { "Content-Type": "application/json", "Accept": "application/json" },
                       body: JSON.stringify({ email: cookies.get('email'), color: color })
                     })
-                      .then(() => console.log("Se envió la información al servidor para borrar el curso deseado"))
-                      .then(() => Swal.fire({
-                        title: "Se borró del servidor el curso deseado.",
-                        icon: "success"
-                      }))
-                      .then((reinicio) => {
-                        if (reinicio) {
+                      .then((response) => {
+                        if (response.status === 200) {
+                          Swal.fire({
+                            title: "Se borró del servidor el curso deseado.",
+                            icon: "success"
+                          })
                           window.location.reload()
+                        }
+                        else {
+                          Swal.fire({
+                            title: "No fue posible borrar el curso por un error",
+                            icon: "error"
+                          })
                         }
                       })
                   }
