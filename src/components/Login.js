@@ -4,7 +4,7 @@ import './login.css'
 import { Link } from "react-router-dom"
 //import axios from 'axios'
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+//import { useNavigate } from 'react-router-dom'
 import Cookies from 'universal-cookie'
 import LoginIcon from '@mui/icons-material/Login';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
@@ -17,7 +17,7 @@ import CottageIcon from '@mui/icons-material/Cottage';
 export default function Login() {
 
     const cookies = new Cookies()
-    const navigate = useNavigate();
+    //const navigate = useNavigate();
     const [errorEmail, setErrorEmail] = useState("")
     const [errorPassword, setErrorPassword] = useState("")
     const [userName, setUsername] = useState("")
