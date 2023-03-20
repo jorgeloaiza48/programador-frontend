@@ -65,8 +65,7 @@ export default function Login() {
             .then(response => {
                 if (response.status === 200) {
                     cookies.set('email', userName.email, { path: '/' })
-                    window.location.href = './rejilla'
-
+                    window.location.hash = '/rejilla'                    
                 }
                 else {
                     Swal.fire({
@@ -79,7 +78,7 @@ export default function Login() {
                 title: "No se puede iniciar sesión por un problema en el servidor",
                 icon: "error"
             }),
-                navigate('/login')
+            window.location.hash = '/login'                
             )
 
 
