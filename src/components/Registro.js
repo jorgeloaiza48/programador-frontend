@@ -56,14 +56,13 @@ function Registro() {
             return
         }
         else {
-            //fetch('https://programador-cursos.onrender.com/api/user', {
-            fetch("http://localhost:3001/api/user", {
+            fetch('https://programador-cursos.onrender.com/api/user', {
+            //fetch("http://localhost:3001/api/user", {
                 method: 'PUT',
                 headers: { "Content-Type": "application/json", 'Accept': 'applicatio/json' },
                 body: JSON.stringify(userName)
             })
-                .then(response => {
-                    console.log(response)
+                .then(response => {                   
                     if (response.status === 200) {
                         Swal.fire({
                             title: "Usuario Creado con éxito",
