@@ -56,7 +56,7 @@ function Registro() {
             return
         }
         else {
-            fetch('https://programador-cursos.onrender.com/api/user', {
+            fetch('https://programador-backend.onrender.com/api/user', {
             //fetch("http://localhost:3001/api/user", {
                 method: 'PUT',
                 headers: { "Content-Type": "application/json", 'Accept': 'applicatio/json' },
