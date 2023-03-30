@@ -45,5 +45,11 @@ form .errorPassword{
     position:fixed;
     top: 51%;   
 }
+.formRegistro form .errorPasswordRegister,
+.errorEmailRegister {
+    color: red;
+    font-size: 12px;
+    margin-top: -40px;
+}
 
     

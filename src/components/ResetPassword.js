@@ -9,12 +9,14 @@ import { Link } from "react-router-dom"
 import SyncLockIcon from '@mui/icons-material/SyncLock';
 import CopyRight from './copyRight/CopyRight';
 import CottageIcon from '@mui/icons-material/Cottage';
+import { useParams } from 'react-router-dom';
 
 
 
 export default function ResetPassword() {
 
     //const navigate = useNavigate();
+    const {id} = useParams() //useParams returns an object with value/key pairs of the dinamic params from the current URL
     const [userName, setUsername] = useState("")
     const [errorPassword, setErrorPassword] = useState("")
     const [errorConfirmPassword, setErrorConfirmPassword] = useState("")
@@ -62,9 +64,9 @@ export default function ResetPassword() {
             })
             return
         }
-        fetch('http://localhost:3001/reset-password/:id/:token', {
+        fetch(`http://localhost:3001/reset-password/${id}`, {
             method: 'POST',
-            headers: {"mode": 'no-cors',"Content-Type": "Application/json" },
+            headers: {"Content-Type": "Application/json" },
             body: JSON.stringify(userName)
         })
             .then(response => {

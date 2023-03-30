@@ -15,34 +15,50 @@ import CottageIcon from '@mui/icons-material/Cottage';
 function Registro() {
 
     const [errorPassword, setErrorPassword] = useState("")
+    const [errorEmail, setErrorEmail] = useState("")
     //const navigate = useNavigate();
     const [userName, setUsername] = useState("")
     const [showPassword, setShowPassword] = useState(true)
+
 
     const handleChange = (e) => {
         const { name, value } = e.target
         setUsername({ ...userName, [name]: value })
     }
 
-    //Cuando se hace click en el input del password, esta función desaparece el aviso "La contraseña debe tener almenos 5 caracteres"
-    const handleClick = (e) => {
-        setErrorPassword("")
-    }
+    //Cuando se hace click en el input del password, esta función desaparece el aviso "La contraseña debe tener almenos 5 caracteres"    
     const handleShowPassword = () => {
         setShowPassword(!showPassword)
     }
-
+    const handleClickPassword = (e) => {
+        setErrorPassword("")
+    }
+    const handleClickEmail = (e) => {
+        setErrorEmail("")
+    }
     const handleSubmit = (e) => {
         e.preventDefault()
+        if ((userName.password === undefined || userName.password.length === 0) && (userName.email === undefined || userName.email.length === 0)) {
+            setErrorPassword("Debe ingresar una contraseña.")
+            setErrorEmail("Debe ingresar un correo electrónico.")
+            return
+        }
+        if (userName.email === undefined || userName.email.length === 0) {
+            setErrorEmail("Debe ingresar un correo electrónico.")
+            return
+        }
+        if (userName.password === undefined || userName.password.length === 0) {
+            setErrorPassword("Debe ingresar una contraseña.")
+            return
+        }
         if (userName.password.length < 5) {
             setErrorPassword("La contraseña debe tener almenos 5 caracteres")
             return
         }
         else {
             //fetch('https://programador-cursos.onrender.com/api/user', {
-                fetch('http://localhost:3001/api/user',{                
-                //mode:'no-cors',
-                method: 'POST',
+            fetch("http://localhost:3001/api/user", {
+                method: 'PUT',
                 headers: { "Content-Type": "application/json", 'Accept': 'applicatio/json' },
                 body: JSON.stringify(userName)
             })
@@ -86,11 +102,11 @@ function Registro() {
                     <div classname='containerSecundario'>
                         <div className='form-group d-grid gap-2'>
                             <label>Email:</label>
-                            <input type="email" className='form-control' name='email' onChange={handleChange} placeholder="Digite una dirección de correo." required /> <br />
-                            {/* {errorEmail && <p className='errorEmail' >{errorEmail}</p>} */}
+                            <input type="email" className='form-control' name='email' onChange={handleChange} onClick={handleClickEmail} placeholder="Digite una dirección de correo." /> <br />
+                            <p className='errorEmailRegister'>{errorEmail}</p>
                             <label>Contraseña</label>
-                            <input type={showPassword ? "password" : "text"} className='form-control' name='password' onChange={handleChange} onClick={handleClick} placeholder="Digite una contraseña de 5 caracteres o más." required /> <br />
-                            <p className='errorPassword'>{errorPassword}</p>
+                            <input type={showPassword ? "password" : "text"} className='form-control' name='password' onChange={handleChange} onClick={handleClickPassword} placeholder="Digite una contraseña de 5 caracteres o más." /> <br />
+                            <p className='errorPasswordRegister'>{errorPassword}</p>
                             <button type="submit" className='btn btn-primary'>Registrarse</button>
                             <Link to="/login">Iniciar Sesión</Link>
                             <MailOutlineIcon className='MailOutlineIconRegister'></MailOutlineIcon>

@@ -5,7 +5,8 @@ import 'handsontable/dist/handsontable.full.css';
 import { registerAllModules } from 'handsontable/registry'
 import 'handsontable/dist/handsontable.full.min.css';
 import backGroundColorFestivos from './rellenoFestivos';
-import { Cookies } from 'react-cookie'
+//import { Cookies } from 'react-cookie'
+import Cookie from 'js-cookie'
 import { useRef, useState, useEffect } from 'react';
 import todosLosMeses from './meses/todosLosMeses';
 import nombreMeses from './nombreMeses/nombreMeses';
@@ -40,7 +41,7 @@ function Rejilla() {
   // };
 
   const hot = useRef(null)
-  const cookies = new Cookies()
+  //const cookies = new Cookies()
   //const [horasDiariasTrabajo, sethorasDiariasTrabajo] = useState(0)
   const [userResult, setUserResult] = useState([])
   const [isLoading, setIsLoading] = useState(true)
@@ -103,18 +104,23 @@ function Rejilla() {
       .then((result) => {
         if (result.isConfirmed) {
           fetch("http://localhost:3001/borrar-toda-programacion", {
-            method: 'POST',
+            method: 'PUT',
             headers: { "Content-Type": "application/json", "Accept": "application/json" },
-            body: JSON.stringify({ email: cookies.get('email') })
+            body: JSON.stringify({ email: Cookie.get('email') })
           })
-            .then(() => console.log("Se envió la información al servidor para borrar la programación de todo el año"))
-            .then(() => Swal.fire({
-              title: "Se borró toda la programación del año en el servidor.",
-              icon: "success"
-            }))
-            .then((reinicio) => {
-              if (reinicio) {
+            .then((response) => {
+              if (response.status === 200) {
                 window.location.reload()
+                Swal.fire({
+                  title: "Se borró toda la programación del año en el servidor.",
+                  icon: "success"
+                })
+              }
+              else {
+                Swal.fire({
+                  title: "No fue posible realizar la operación solicitada",
+                  icon: "error"
+                })
               }
             })
         }
@@ -179,7 +185,7 @@ function Rejilla() {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          cookies.remove('email', { path: "/" })
+          Cookie.remove('email', { path: "/" })
           window.location.hash = '/login'
           //window.location.href = './login'
         }
@@ -187,40 +193,48 @@ function Rejilla() {
   }
   //Si no se está logueado y en la barra de direcciones /rejilla entonces redirige al login.
   useEffect(() => {
-    if (!cookies.get('email')) {
+    if (!Cookie.get('email')) {
       window.location.hash = "/login"
       //window.location.href = "./login"
     }
   })
 
-  const obtenerDatos = () => {
-
+  const obtenerDatos = async () => {
     let requestOptions = {
-      method: 'GET',
-      maxBodyLength: Infinity,
+      method: 'GET',    
       url: "https://json.extendsclass.com/bin/5bbeeaecdc32",
-      headers: { 'Content-Type': 'application/json' }
+      headers: { 'Content-Type': 'application/json',"Cache-Control":"no-cache"},            
     };
-    axios(requestOptions)
-      .then((user) => user.data.filter(element => element.email === cookies.get('email')))
-      .then(user => setUserResult(user))
-      .then(() => setIsLoading(false))      
+    const res = await axios(requestOptions)
+    const email = Cookie.get('email')
+    const user = res.data.filter((element) => element.email === email)
+    console.log("user-->> ", user)
+    setUserResult(user)
+    setIsLoading(false)
   }
 
 
   // const obtenerDatos = async () => {
-  //   const data = await fetch('https://programador-cursos.onrender.com/api/usuarios-registrados')
+  //   const data = await fetch('https://json.extendsclass.com/bin/5bbeeaecdc32', {
+  //     method: 'GET',
+  //     //headers: { 'Content-Type': 'application/json' }
+  //   })
   //   const user = await data.json()
+  //   console.log("user: ", user)
   //   const userResultFilter = user.filter(element => element.email === cookies.get('email'))
   //   setUserResult(userResultFilter)
   //   setIsLoading(false)
-  //   console.log("Esto es userResult fuera de cells ", userResult)
-  //   console.log("Esto es userResult[0] fuera de Cells ", userResult[0])
-  //   console.log("Esto es la longitud de UserResult ", userResult.length)
+
+  //   console.log("userresultFilter-->> ", userResultFilter)
   // }
 
   // const obtenerDatos = () => {
-  //   fetch('http://localhost:3001/usuarios-registrados')
+  //   //fetch('http://localhost:3001/usuarios-registrados')
+  //   fetch('https://json.extendsclass.com/bin/5bbeeaecdc32', {
+  //     method: 'GET',
+  //     maxBodyLength: Infinity,
+  //     headers: { 'Content-Type': 'application/json' }
+  //   })
   //     .then((data) => data.json())
   //     .then((user) => user.filter(element => element.email === cookies.get('email')))
   //     .then((user) => setUserResult(user))
@@ -256,7 +270,7 @@ function Rejilla() {
 
     <div className="rejilla" >
 
-      <h4>Bienvenido {cookies.get('email')}</h4>
+      <h4>Bienvenido {Cookie.get('email')}</h4>
 
       <HotTable
         ref={hot}
@@ -461,7 +475,7 @@ function Rejilla() {
                     fetch("http://localhost:3001/borrar-curso", {
                       method: 'POST',
                       headers: { "Content-Type": "application/json", "Accept": "application/json" },
-                      body: JSON.stringify({ email: cookies.get('email'), color: color })
+                      body: JSON.stringify({ email: Cookie.get('email'), color: color })
                     })
                       .then((response) => {
                         if (response.status === 200) {
@@ -870,9 +884,9 @@ function Rejilla() {
                         //Cuando hay un cruce de horas entonces no ingresa a este if porque "duracionCursoExacto no queda en cero" y por lo tanto no se envía nada al backend
                         if (duracionCursoExacto === 0 && diaHorasDiariasIncompletas === 0) {
                           fetch("http://localhost:3001/update-user", {
-                            method: 'POST',
+                            method: 'PUT',
                             headers: { "Content-Type": "application/json", "Accept": "application/json" },
-                            body: JSON.stringify({ email: cookies.get('email'), colorRelleno: colorDeRelleno, coordenadasCurso: coordenadasCurso, coordColorHoras: coordColorHoras, totalHorasPorMes: totalHorasPorMes })
+                            body: JSON.stringify({ email: Cookie.get('email'), colorRelleno: colorDeRelleno, coordenadasCurso: coordenadasCurso, coordColorHoras: coordColorHoras, totalHorasPorMes: totalHorasPorMes })
                           })
                             .then(function () {
                               console.log("Se guardó en el servidor (Backend) las preferencias del usuario")
@@ -901,7 +915,7 @@ function Rejilla() {
         <div className="logout"><LogoutIcon onClick={cerrarSesion} sx={{ fontSize: 30 }}></LogoutIcon><span className='CerrarSesion'>Cerrar Sesión</span></div>
         <div className='borrarProgramacion' onClick={deleteWholeProgramming}><DeleteForeverIcon sx={{ fontSize: 35 }}></DeleteForeverIcon><span className='borrarProgramacionTexto'><WarningAmberIcon></WarningAmberIcon><br></br>Borrar toda la programación del año.</span></div>
         <div className='HelpIcon'><HelpIcon sx={{ fontSize: 35 }}></HelpIcon><span className='HelpIconText'><QuizIcon></QuizIcon>Para crear o programar un curso haga click en la celda correspondiente a la fecha y hora de inicio.<br></br><br></br><QuizIcon></QuizIcon>Para borrar un curso específico haga click sobre el <strong>color</strong> del curso a borrar ubicado en la parte inferior, sobre las horas (ver imagen). Se le pedirá confirmación antes de borrar el curso.<br></br><img src="/colores-cursos.png" alt='logo' /></span></div>
-        <div className='avatar'><Avatar sx={avatarStyle}><PersonIcon></PersonIcon></Avatar><span className='emailAvatar'>{cookies.get('email')}</span></div>
+        <div className='avatar'><Avatar sx={avatarStyle}><PersonIcon></PersonIcon></Avatar><span className='emailAvatar'>{Cookie.get('email')}</span></div>
       </div>
       <CopyRight></CopyRight>
     </div>

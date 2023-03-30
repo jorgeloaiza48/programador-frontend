@@ -3,7 +3,7 @@ function generarNumero(numero) {
   }
 
  function colorRGB() {
-    let color = "(" + generarNumero(250) + "," + generarNumero(250) + "," + generarNumero(250) + ")";
+    let color = "(" + generarNumero(50) + "," + generarNumero(150) + "," + generarNumero(250) + ")";
     return "rgb" + color
   }
 

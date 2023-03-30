@@ -10,6 +10,7 @@ import FormikContainer from './formulario/FormikContainer'
 import OlvidoPassword from './OlvidoPassword'
 import TokenExpired from './TokenExpired'
 import Inicio from './inicio/Inicio'
+import ResetPassword from './ResetPassword'
 
 
 export default function Router() {
@@ -23,6 +24,7 @@ export default function Router() {
                     <Route exact path='/registro' element={<Registro />} />
                     <Route exact path='/olvidoPassword' element={<OlvidoPassword />} />
                     <Route exact path='/reset-password/:id/:token' element={<TokenExpired />} />
+                    <Route exact path='/cambio-password' element={<ResetPassword />} />
                     <Route exact path='/login' element={<Login />} />
                     <Route exact path='/menu' element={<Menu />} />
                     <Route exact path='/rejilla' element={<Rejilla />} />
