@@ -103,7 +103,8 @@ function Rejilla() {
     })
       .then((result) => {
         if (result.isConfirmed) {
-          fetch("http://localhost:3001/borrar-toda-programacion", {
+          // fetch("http://localhost:3001/borrar-toda-programacion", {
+            fetch("https://programador-backend.onrender.com/borrar-toda-programacion", {
             method: 'PUT',
             headers: { "Content-Type": "application/json", "Accept": "application/json" },
             body: JSON.stringify({ email: Cookie.get('email') })
@@ -472,7 +473,8 @@ function Rejilla() {
               })
                 .then((result) => {
                   if (result.isConfirmed) {
-                    fetch("http://localhost:3001/borrar-curso", {
+                    // fetch("http://localhost:3001/borrar-curso", {
+                      fetch("https://programador-backend.onrender.com/borrar-curso", {
                       method: 'POST',
                       headers: { "Content-Type": "application/json", "Accept": "application/json" },
                       body: JSON.stringify({ email: Cookie.get('email'), color: color })
@@ -883,7 +885,8 @@ function Rejilla() {
 
                         //Cuando hay un cruce de horas entonces no ingresa a este if porque "duracionCursoExacto no queda en cero" y por lo tanto no se envía nada al backend
                         if (duracionCursoExacto === 0 && diaHorasDiariasIncompletas === 0) {
-                          fetch("http://localhost:3001/update-user", {
+                          // fetch("http://localhost:3001/update-user", {
+                            fetch("https://programador-backend.onrender.com/update-user", {
                             method: 'PUT',
                             headers: { "Content-Type": "application/json", "Accept": "application/json" },
                             body: JSON.stringify({ email: Cookie.get('email'), colorRelleno: colorDeRelleno, coordenadasCurso: coordenadasCurso, coordColorHoras: coordColorHoras, totalHorasPorMes: totalHorasPorMes })

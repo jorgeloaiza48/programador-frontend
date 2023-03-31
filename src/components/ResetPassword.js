@@ -64,7 +64,8 @@ export default function ResetPassword() {
             })
             return
         }
-        fetch(`http://localhost:3001/reset-password/${id}`, {
+        // fetch(`http://localhost:3001/reset-password/${id}`, {
+            fetch(`https://programador-backend.onrender.com/reset-password/${id}`, {
             method: 'POST',
             headers: {"Content-Type": "Application/json" },
             body: JSON.stringify(userName)

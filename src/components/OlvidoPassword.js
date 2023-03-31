@@ -39,7 +39,8 @@ export default function OlvidoPassword() {
             return
         }
         setIsLoading(true)
-        fetch('http://localhost:3001/forgot-password', {
+        // fetch('http://localhost:3001/forgot-password', {
+            fetch('https://programador-backend.onrender.com/forgot-password', {
             method: 'POST',
             headers: { "Content-Type": "Application/json"},
             body: JSON.stringify(userName)
