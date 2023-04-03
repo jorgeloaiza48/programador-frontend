@@ -21,7 +21,8 @@ export default function TokenExpired() {
     method: 'GET',
     headers: { "Content-Type": "Application/json" },
     // url:`http://localhost:3001/reset-password/${id}/${token}`
-    url:`https://programador-backend.onrender.com/reset-password/${id}/${token}`
+    //url:`https://programador-backend.onrender.com/reset-password/${id}/${token}`
+    url:`${process.env.REACT_APP_BASE_URL}/reset-password/${id}/${token}`    
   }
   //fetch(`http://localhost:3001/reset-password/${id}/${token}`,options)
   axios(options)

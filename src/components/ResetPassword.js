@@ -16,7 +16,7 @@ import { useParams } from 'react-router-dom';
 export default function ResetPassword() {
 
     //const navigate = useNavigate();
-    const {id} = useParams() //useParams returns an object with value/key pairs of the dinamic params from the current URL
+    const { id } = useParams() //useParams returns an object with value/key pairs of the dinamic params from the current URL
     const [userName, setUsername] = useState("")
     const [errorPassword, setErrorPassword] = useState("")
     const [errorConfirmPassword, setErrorConfirmPassword] = useState("")
@@ -32,10 +32,10 @@ export default function ResetPassword() {
         setErrorPassword("")
         setErrorConfirmPassword("")
     }
-    const handleShowPassword = () =>{
+    const handleShowPassword = () => {
         setShowPassword(!showPassword)
     }
-    const handleShowPasswordConfirm = () =>{
+    const handleShowPasswordConfirm = () => {
         setShowPasswordConfirm(!showPasswordConfirm)
     }
     const handleSubmit = (e) => {
@@ -65,9 +65,10 @@ export default function ResetPassword() {
             return
         }
         // fetch(`http://localhost:3001/reset-password/${id}`, {
-            fetch(`https://programador-backend.onrender.com/reset-password/${id}`, {
+        //fetch(`https://programador-backend.onrender.com/reset-password/${id}`, {
+        fetch(`${process.env.REACT_APP_BASE_URL}/reset-password/${id}`, {
             method: 'POST',
-            headers: {"Content-Type": "Application/json" },
+            headers: { "Content-Type": "Application/json" },
             body: JSON.stringify(userName)
         })
             .then(response => {
@@ -79,25 +80,25 @@ export default function ResetPassword() {
                     window.location.hash = '/login'
                     // navigate('/login') //lleva al formulario de login después de cambiar la contraseña.  
                 }
-                else{
+                else {
                     Swal.fire({
                         title: "El enlace ya no es válido",
                         icon: "error"
                     })
                 }
-                
+
             })
     }
 
     return (
         <div className='formRegistro'>
-              <Link to="/">
+            <Link to="/">
                 <div className='divHome'>
                     <CottageIcon sx={{ fontSize: 40 }}></CottageIcon>
                     <p><strong>Inicio</strong></p>
                 </div>
             </Link>
-            <form >          
+            <form >
                 <LockResetIcon className='LockResetIcon' sx={{ fontSize: 45 }}></LockResetIcon>
                 <Link to="/login"><div className='logInResetPassword'><LoginIcon sx={{ fontSize: 35 }}></LoginIcon><p>Log in</p></div></Link>
                 <h4 className='textoReseteoContraseña'>Recuperación de Contraseña</h4>
@@ -105,10 +106,10 @@ export default function ResetPassword() {
                     <div classname='containerSecundario'>
                         <div className='form-group d-grid gap-2'>
                             <label>Contraseña</label>
-                            <input type={showPassword ? "password": "text"} className='form-control' name='password' onChange={handleChange} onClick={handleClick} placeholder="Digite una contraseña" /> <br />
+                            <input type={showPassword ? "password" : "text"} className='form-control' name='password' onChange={handleChange} onClick={handleClick} placeholder="Digite una contraseña" /> <br />
                             <p className='errorEmailOlvidoPassword'>{errorPassword}</p>
                             <label>Confirme Contraseña</label>
-                            <input type={showPasswordConfirm ? "password": "text"} className='form-control' name='confirmpassword' onChange={handleChange} onClick={handleClick} placeholder="Confirme la contraseña" /> <br />
+                            <input type={showPasswordConfirm ? "password" : "text"} className='form-control' name='confirmpassword' onChange={handleChange} onClick={handleClick} placeholder="Confirme la contraseña" /> <br />
                             <p className='errorEmailOlvidoPassword'>{errorConfirmPassword}</p>
                             <button type="submit" className='btn btn-primary' onClick={handleSubmit}>Enviar</button>
                             <SyncLockIcon className='SyncLockIconResetPassword' onClick={handleShowPassword}></SyncLockIcon>

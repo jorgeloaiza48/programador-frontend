@@ -5,8 +5,8 @@ import { Link } from "react-router-dom"
 //import axios from 'axios'
 import { useState } from 'react'
 //import { useNavigate } from 'react-router-dom'
-//import Cookies from 'universal-cookie'
-import Cookie from 'js-cookie'
+import Cookies from 'universal-cookie'
+//import Cookie from 'js-cookie'
 import LoginIcon from '@mui/icons-material/Login';
 import MailOutlineIcon from '@mui/icons-material/MailOutline';
 import PasswordIcon from '@mui/icons-material/Password';
@@ -17,7 +17,7 @@ import CottageIcon from '@mui/icons-material/Cottage';
 
 export default function Login() {
 
-    //const cookies = new Cookies()
+    const cookies = new Cookies()
     //const navigate = useNavigate();
     const [errorEmail, setErrorEmail] = useState("")
     const [errorPassword, setErrorPassword] = useState("")
@@ -59,19 +59,21 @@ export default function Login() {
             return
         }
         //fetch("http://localhost:3001/login", {
-            fetch("https://programador-backend.onrender.com/login", {        
+        //fetch("https://programador-backend.onrender.com/login", {        
+        fetch(`${process.env.REACT_APP_BASE_URL}/login`, { //variable de entorno. Ver archivo ".env-cmdrc"
             method: 'POST',
             headers: { "Content-Type": "Application/json", "Accept": "application/json" },
             body: JSON.stringify(userName)
         })
-            .then(response => {               
+            .then(response => {
                 if (response.status === 200) {
                     //cookies.set('email', userName.email, { path: '/' })
-                    Cookie.set('email',userName.email,{
-                        expires:1,
-                        secure:true,
-                        sameSite:'Strict',
-                        path:'/'
+                    cookies.set('email', userName.email, {
+                        // expires: 1,
+                        //maxAge : 10,
+                        secure: true,
+                        sameSite: 'Strict',
+                        path: '/'
                     })
                     window.location.hash = '/rejilla'
                 }
@@ -119,7 +121,7 @@ export default function Login() {
 
     //Si ya se inició sesión y se escribe en la barra de direcciones '/login' entonces lo redirige al componente "rejilla".
     useEffect(() => {
-        if (Cookie.get('email')) {
+        if (cookies.get('email')) {
             window.location.hash = '/rejilla'
             //window.location.href = "./rejilla"
         }

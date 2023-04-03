@@ -19,6 +19,7 @@ function Registro() {
     //const navigate = useNavigate();
     const [userName, setUsername] = useState("")
     const [showPassword, setShowPassword] = useState(true)
+    const [isLoading, setIsLoading] = useState(false)
 
 
     const handleChange = (e) => {
@@ -56,14 +57,17 @@ function Registro() {
             return
         }
         else {
-            fetch('https://programador-backend.onrender.com/api/user', {
+            //fetch('https://programador-backend.onrender.com/api/user', {
             //fetch("http://localhost:3001/api/user", {
+            setIsLoading(true)
+            fetch(`${process.env.REACT_APP_BASE_URL}/api/user`, {
                 method: 'PUT',
                 headers: { "Content-Type": "application/json", 'Accept': 'applicatio/json' },
                 body: JSON.stringify(userName)
             })
-                .then(response => {                   
+                .then(response => {
                     if (response.status === 200) {
+                        setIsLoading(false)
                         Swal.fire({
                             title: "Usuario Creado con éxito",
                             icon: "success"
@@ -72,6 +76,7 @@ function Registro() {
                         //navigate('/login') //lleva al formulario de login después de registrarse.  
                     }
                     else {
+                        setIsLoading(false)
                         Swal.fire({
                             title: "No se puede crear el usuario porque ya hay uno registrado con el email: " + userName.email,
                             icon: "error"
@@ -83,7 +88,10 @@ function Registro() {
         }
     };
 
-
+    if (isLoading) {
+        Swal.fire({ title: "Enviando datos..." })
+        Swal.showLoading()
+    }
 
 
     return (

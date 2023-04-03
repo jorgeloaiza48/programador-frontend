@@ -40,14 +40,15 @@ export default function OlvidoPassword() {
         }
         setIsLoading(true)
         // fetch('http://localhost:3001/forgot-password', {
-            fetch('https://programador-backend.onrender.com/forgot-password', {
+        //fetch('https://programador-backend.onrender.com/forgot-password', {
+        fetch(`${process.env.REACT_APP_BASE_URL}/forgot-password`, {
             method: 'POST',
-            headers: { "Content-Type": "Application/json"},
+            headers: { "Content-Type": "Application/json" },
             body: JSON.stringify(userName)
         })
-            .then(response => {
-                setIsLoading(false)
+            .then(response => {               
                 if (response.status === 200) {
+                    setIsLoading(false)
                     Swal.fire({
                         title: "Se ha enviado un correo a " + userName.email + " para reestablecer la contraseña.",
                         icon: "success"

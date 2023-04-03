@@ -25,6 +25,7 @@ import WarningAmberIcon from '@mui/icons-material/WarningAmber';
 import QuizIcon from '@mui/icons-material/Quiz';
 import CopyRight from './copyRight/CopyRight';
 import axios from 'axios';
+import SessionExpired from './sessionExpired/SessionExpired';
 
 
 
@@ -104,7 +105,8 @@ function Rejilla() {
       .then((result) => {
         if (result.isConfirmed) {
           // fetch("http://localhost:3001/borrar-toda-programacion", {
-            fetch("https://programador-backend.onrender.com/borrar-toda-programacion", {
+            //fetch("https://programador-backend.onrender.com/borrar-toda-programacion", {
+              fetch(`${process.env.REACT_APP_BASE_URL}/borrar-toda-programacion`, {              
             method: 'PUT',
             headers: { "Content-Type": "application/json", "Accept": "application/json" },
             body: JSON.stringify({ email: Cookie.get('email') })
@@ -474,7 +476,8 @@ function Rejilla() {
                 .then((result) => {
                   if (result.isConfirmed) {
                     // fetch("http://localhost:3001/borrar-curso", {
-                      fetch("https://programador-backend.onrender.com/borrar-curso", {
+                      //fetch("https://programador-backend.onrender.com/borrar-curso", {
+                        fetch(`${process.env.REACT_APP_BASE_URL}/borrar-curso`, {  
                       method: 'POST',
                       headers: { "Content-Type": "application/json", "Accept": "application/json" },
                       body: JSON.stringify({ email: Cookie.get('email'), color: color })
@@ -886,7 +889,8 @@ function Rejilla() {
                         //Cuando hay un cruce de horas entonces no ingresa a este if porque "duracionCursoExacto no queda en cero" y por lo tanto no se envía nada al backend
                         if (duracionCursoExacto === 0 && diaHorasDiariasIncompletas === 0) {
                           // fetch("http://localhost:3001/update-user", {
-                            fetch("https://programador-backend.onrender.com/update-user", {
+                            //fetch("https://programador-backend.onrender.com/update-user", {
+                              fetch(`${process.env.REACT_APP_BASE_URL}/update-user`, {
                             method: 'PUT',
                             headers: { "Content-Type": "application/json", "Accept": "application/json" },
                             body: JSON.stringify({ email: Cookie.get('email'), colorRelleno: colorDeRelleno, coordenadasCurso: coordenadasCurso, coordColorHoras: coordColorHoras, totalHorasPorMes: totalHorasPorMes })
@@ -921,6 +925,7 @@ function Rejilla() {
         <div className='avatar'><Avatar sx={avatarStyle}><PersonIcon></PersonIcon></Avatar><span className='emailAvatar'>{Cookie.get('email')}</span></div>
       </div>
       <CopyRight></CopyRight>
+     <SessionExpired></SessionExpired>
     </div>
 
   )
