@@ -41,6 +41,7 @@ export default function OlvidoPassword() {
         setIsLoading(true)
         // fetch('http://localhost:3001/forgot-password', {
         //fetch('https://programador-backend.onrender.com/forgot-password', {
+            console.log("process.env.REACT_APP_BASE_URL -->> ",process.env.REACT_APP_BASE_URL)
         fetch(`${process.env.REACT_APP_BASE_URL}/forgot-password`, {
             method: 'POST',
             headers: { "Content-Type": "Application/json" },
