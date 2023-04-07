@@ -32,10 +32,8 @@
     "yup": "^1.0.0"
   },
   "scripts": {
-    "start-local": "env-cmd -e local react-scripts start",
-    "build-local": "env-cmd -e local react-scripts build",
-    "start-remote": "env-cmd -e remote react-scripts start",
-    "build-remote": "env-cmd -e remote react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",    
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

@@ -39,7 +39,19 @@
   top: 20px;
   right: 20px;
 }
-
+/* año 2023 */
+.rejilla h3{
+  position: fixed;
+  top: 20px;
+  right: 145px;
+}
+/* puntico verde */
+.rejilla img{ 
+  position: fixed;
+  top: 43px;
+  left: 50px;
+  width: 10px;
+}
 .logout:hover .CerrarSesion {  
   visibility: visible;
   transition-delay: 0.3s;

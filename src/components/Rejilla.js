@@ -105,8 +105,8 @@ function Rejilla() {
       .then((result) => {
         if (result.isConfirmed) {
           // fetch("http://localhost:3001/borrar-toda-programacion", {
-            //fetch("https://programador-backend.onrender.com/borrar-toda-programacion", {
-              fetch(`${process.env.REACT_APP_BASE_URL}/borrar-toda-programacion`, {              
+          //fetch("https://programador-backend.onrender.com/borrar-toda-programacion", {
+          fetch(`${process.env.REACT_APP_BASE_URL}/borrar-toda-programacion`, {
             method: 'PUT',
             headers: { "Content-Type": "application/json", "Accept": "application/json" },
             body: JSON.stringify({ email: Cookie.get('email') })
@@ -204,14 +204,13 @@ function Rejilla() {
 
   const obtenerDatos = async () => {
     let requestOptions = {
-      method: 'GET',    
+      method: 'GET',
       url: "https://json.extendsclass.com/bin/5bbeeaecdc32",
-      headers: { 'Content-Type': 'application/json',"Cache-Control":"no-cache"},            
+      headers: { 'Content-Type': 'application/json', "Cache-Control": "no-cache" },
     };
     const res = await axios(requestOptions)
     const email = Cookie.get('email')
     const user = res.data.filter((element) => element.email === email)
-    console.log("user-->> ", user)
     setUserResult(user)
     setIsLoading(false)
   }
@@ -476,9 +475,9 @@ function Rejilla() {
                 .then((result) => {
                   if (result.isConfirmed) {
                     // fetch("http://localhost:3001/borrar-curso", {
-                      //fetch("https://programador-backend.onrender.com/borrar-curso", {
-                        fetch(`${process.env.REACT_APP_BASE_URL}/borrar-curso`, {  
-                      method: 'POST',
+                    //fetch("https://programador-backend.onrender.com/borrar-curso", {
+                    fetch(`${process.env.REACT_APP_BASE_URL}/borrar-curso`, {
+                      method: 'PUT',
                       headers: { "Content-Type": "application/json", "Accept": "application/json" },
                       body: JSON.stringify({ email: Cookie.get('email'), color: color })
                     })
@@ -889,8 +888,8 @@ function Rejilla() {
                         //Cuando hay un cruce de horas entonces no ingresa a este if porque "duracionCursoExacto no queda en cero" y por lo tanto no se envía nada al backend
                         if (duracionCursoExacto === 0 && diaHorasDiariasIncompletas === 0) {
                           // fetch("http://localhost:3001/update-user", {
-                            //fetch("https://programador-backend.onrender.com/update-user", {
-                              fetch(`${process.env.REACT_APP_BASE_URL}/update-user`, {
+                          //fetch("https://programador-backend.onrender.com/update-user", {
+                          fetch(`${process.env.REACT_APP_BASE_URL}/update-user`, {
                             method: 'PUT',
                             headers: { "Content-Type": "application/json", "Accept": "application/json" },
                             body: JSON.stringify({ email: Cookie.get('email'), colorRelleno: colorDeRelleno, coordenadasCurso: coordenadasCurso, coordColorHoras: coordColorHoras, totalHorasPorMes: totalHorasPorMes })
@@ -923,9 +922,11 @@ function Rejilla() {
         <div className='borrarProgramacion' onClick={deleteWholeProgramming}><DeleteForeverIcon sx={{ fontSize: 35 }}></DeleteForeverIcon><span className='borrarProgramacionTexto'><WarningAmberIcon></WarningAmberIcon><br></br>Borrar toda la programación del año.</span></div>
         <div className='HelpIcon'><HelpIcon sx={{ fontSize: 35 }}></HelpIcon><span className='HelpIconText'><QuizIcon></QuizIcon>Para crear o programar un curso haga click en la celda correspondiente a la fecha y hora de inicio.<br></br><br></br><QuizIcon></QuizIcon>Para borrar un curso específico haga click sobre el <strong>color</strong> del curso a borrar ubicado en la parte inferior, sobre las horas (ver imagen). Se le pedirá confirmación antes de borrar el curso.<br></br><img src="/colores-cursos.png" alt='logo' /></span></div>
         <div className='avatar'><Avatar sx={avatarStyle}><PersonIcon></PersonIcon></Avatar><span className='emailAvatar'>{Cookie.get('email')}</span></div>
+        <div><h3>2023</h3></div>
+        <div><img src="/punticoVerde.png" alt='punticoVerde'/></div>       
       </div>
       <CopyRight></CopyRight>
-     <SessionExpired></SessionExpired>
+      <SessionExpired></SessionExpired>
     </div>
 
   )

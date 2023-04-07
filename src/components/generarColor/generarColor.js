@@ -1,5 +1,5 @@
 function generarNumero(numero) {
-    return (Math.random() * numero.toFixed(0));
+    return Math.trunc((Math.random() * numero.toFixed(0)));
   }
 
  function colorRGB() {
