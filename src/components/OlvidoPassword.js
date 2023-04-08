@@ -12,7 +12,7 @@ import CottageIcon from '@mui/icons-material/Cottage';
 
 
 export default function OlvidoPassword() {
-
+    let URL = ""
     //const navigate = useNavigate();
     const [userName, setUsername] = useState("")
     const [errorEmail, setErrorEmail] = useState("")
@@ -40,8 +40,9 @@ export default function OlvidoPassword() {
         }
         setIsLoading(true)
         // fetch('http://localhost:3001/forgot-password', {
-        //fetch('https://programador-backend.onrender.com/forgot-password', {          
-        fetch(`${process.env.REACT_APP_BASE_URL}/forgot-password`, {
+        //fetch('https://programador-backend.onrender.com/forgot-password', {    
+        URL = process.env.REACT_APP_BASE_URL
+        fetch(`${URL}/forgot-password`, {
             method: 'POST',
             headers: { "Content-Type": "Application/json" },
             body: JSON.stringify(userName)

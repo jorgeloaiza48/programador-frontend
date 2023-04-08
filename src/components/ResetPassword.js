@@ -14,7 +14,7 @@ import { useParams } from 'react-router-dom';
 
 
 export default function ResetPassword() {
-
+    let URL = ""
     //const navigate = useNavigate();
     const { id } = useParams() //useParams returns an object with value/key pairs of the dinamic params from the current URL
     const [userName, setUsername] = useState("")
@@ -66,7 +66,8 @@ export default function ResetPassword() {
         }
         // fetch(`http://localhost:3001/reset-password/${id}`, {
         //fetch(`https://programador-backend.onrender.com/reset-password/${id}`, {
-        fetch(`${process.env.REACT_APP_BASE_URL}/reset-password/${id}`, {
+            URL = process.env.REACT_APP_BASE_URL 
+        fetch(`${URL}/reset-password/${id}`, {
             method: 'POST',
             headers: { "Content-Type": "Application/json" },
             body: JSON.stringify(userName)

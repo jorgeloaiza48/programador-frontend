@@ -16,7 +16,7 @@ import CottageIcon from '@mui/icons-material/Cottage';
 
 
 export default function Login() {
-
+    let URL = ""
     const cookies = new Cookies()
     //const navigate = useNavigate();
     const [errorEmail, setErrorEmail] = useState("")
@@ -59,8 +59,9 @@ export default function Login() {
             return
         }
         //fetch("http://localhost:3001/login", {
-        //fetch("https://programador-backend.onrender.com/login", {        
-        fetch(`${process.env.REACT_APP_BASE_URL}/login`, { //variable de entorno. Ver archivo ".env-cmdrc"
+        //fetch("https://programador-backend.onrender.com/login", {  
+        URL = process.env.REACT_APP_BASE_URL
+        fetch(`${URL}/login`, { //variable de entorno. Ver archivo ".env-cmdrc"
             method: 'POST',
             headers: { "Content-Type": "Application/json", "Accept": "application/json" },
             body: JSON.stringify(userName)
@@ -90,33 +91,7 @@ export default function Login() {
                 icon: "error"
             }),
                 window.location.hash = '/login'
-            )
-
-
-        // fetch("https://programador-cursos.onrender.com/api/login", {
-        //     method: 'POST',
-        //     headers: {
-        //                 "mode": 'no-cors',
-        //                 "Content-Type": "Application/json"              
-        //     },
-        //     body: JSON.stringify(userName)
-        // })
-        //     .then(response => {
-        //         if (response.status === 200) {
-        //             cookies.set('email', userName.email, { path: '/' })
-        //             window.location.hash = "/rejilla"
-        //             //window.location.href = './rejilla'
-
-        //         }
-        //         else {
-        //             Swal.fire({
-        //                 title: "Las credenciales ingresadas no son correctas.",
-        //                 icon: "error"
-        //             })
-        //             window.location.hash = '/login'
-        //             // navigate('/login')
-        //         }
-        //     })
+            )        
     }
 
     //Si ya se inició sesión y se escribe en la barra de direcciones '/login' entonces lo redirige al componente "rejilla".

@@ -13,7 +13,7 @@ import CottageIcon from '@mui/icons-material/Cottage';
 //import axios from "axios"
 
 function Registro() {
-
+    let URL = ""
     const [errorPassword, setErrorPassword] = useState("")
     const [errorEmail, setErrorEmail] = useState("")
     //const navigate = useNavigate();
@@ -60,7 +60,8 @@ function Registro() {
             //fetch('https://programador-backend.onrender.com/api/user', {
             //fetch("http://localhost:3001/api/user", {
             setIsLoading(true)
-            fetch(`${process.env.REACT_APP_BASE_URL}/api/user`, {
+            URL = process.env.REACT_APP_BASE_URL
+            fetch(`${URL}/api/user`, {
                 method: 'PUT',
                 headers: { "Content-Type": "application/json", 'Accept': 'applicatio/json' },
                 body: JSON.stringify(userName)

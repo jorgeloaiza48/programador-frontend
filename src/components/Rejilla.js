@@ -41,6 +41,7 @@ function Rejilla() {
   //   margin: 30,    
   // };
 
+  let URL = ""
   const hot = useRef(null)
   //const cookies = new Cookies()
   //const [horasDiariasTrabajo, sethorasDiariasTrabajo] = useState(0)
@@ -106,7 +107,8 @@ function Rejilla() {
         if (result.isConfirmed) {
           // fetch("http://localhost:3001/borrar-toda-programacion", {
           //fetch("https://programador-backend.onrender.com/borrar-toda-programacion", {
-          fetch(`${process.env.REACT_APP_BASE_URL}/borrar-toda-programacion`, {
+            URL = process.env.REACT_APP_BASE_URL
+          fetch(`${URL}/borrar-toda-programacion`, {
             method: 'PUT',
             headers: { "Content-Type": "application/json", "Accept": "application/json" },
             body: JSON.stringify({ email: Cookie.get('email') })
@@ -476,7 +478,8 @@ function Rejilla() {
                   if (result.isConfirmed) {
                     // fetch("http://localhost:3001/borrar-curso", {
                     //fetch("https://programador-backend.onrender.com/borrar-curso", {
-                    fetch(`${process.env.REACT_APP_BASE_URL}/borrar-curso`, {
+                      URL = process.env.REACT_APP_BASE_URL
+                    fetch(`${URL}/borrar-curso`, {
                       method: 'PUT',
                       headers: { "Content-Type": "application/json", "Accept": "application/json" },
                       body: JSON.stringify({ email: Cookie.get('email'), color: color })
@@ -889,7 +892,8 @@ function Rejilla() {
                         if (duracionCursoExacto === 0 && diaHorasDiariasIncompletas === 0) {
                           // fetch("http://localhost:3001/update-user", {
                           //fetch("https://programador-backend.onrender.com/update-user", {
-                          fetch(`${process.env.REACT_APP_BASE_URL}/update-user`, {
+                            URL = process.env.REACT_APP_BASE_URL
+                          fetch(`${URL}/update-user`, {
                             method: 'PUT',
                             headers: { "Content-Type": "application/json", "Accept": "application/json" },
                             body: JSON.stringify({ email: Cookie.get('email'), colorRelleno: colorDeRelleno, coordenadasCurso: coordenadasCurso, coordColorHoras: coordColorHoras, totalHorasPorMes: totalHorasPorMes })
