@@ -16,7 +16,7 @@ import CottageIcon from '@mui/icons-material/Cottage';
 
 
 export default function Login() {
-    //let URL = ""
+    let URL = ""
     const cookies = new Cookies()
     //const navigate = useNavigate();
     const [errorEmail, setErrorEmail] = useState("")
@@ -59,9 +59,14 @@ export default function Login() {
             return
         }
         //fetch("http://localhost:3001/login", {
-        fetch("https://programador-backend.onrender.com/login", {  
-        //URL = process.env.REACT_APP_BASE_URL
-        //fetch(`${URL}/login`, { //variable de entorno. Ver archivo ".env-cmdrc"
+        //fetch("https://programador-backend.onrender.com/login", {  
+        if (process.env.REACT_APP_ENVIRONMENT === 'DEVELOPMENT') {
+            URL = "http://localhost:3001"
+        }
+        else {
+            URL = 'https://programador-backend.onrender.com'
+        }
+        fetch(`${URL}/login`, { //variable de entorno. Ver archivo ".env-cmdrc"
             method: 'POST',
             headers: { "Content-Type": "Application/json", "Accept": "application/json" },
             body: JSON.stringify(userName)
@@ -91,7 +96,7 @@ export default function Login() {
                 icon: "error"
             }),
                 window.location.hash = '/login'
-            )        
+            )
     }
 
     //Si ya se inició sesión y se escribe en la barra de direcciones '/login' entonces lo redirige al componente "rejilla".

@@ -14,16 +14,20 @@ import { useParams } from 'react-router-dom';
 
 export default function TokenExpired() {
   let URL = ""
-  URL = process.env.REACT_APP_BASE_URL
   const [resetPassword, setResetpassword] = useState(false)
-  const {id,token} = useParams() //useParams returns an object with value/key pairs of the dinamic params from the current URL
-    
+  const { id, token } = useParams() //useParams returns an object with value/key pairs of the dinamic params from the current URL
+  if (process.env.REACT_APP_ENVIRONMENT === 'DEVELOPMENT') {
+    URL = "http://localhost:3001"
+  }
+  else {
+    URL = 'https://programador-backend.onrender.com'
+  }
   let options = {
     method: 'GET',
     headers: { "Content-Type": "Application/json" },
     // url:`http://localhost:3001/reset-password/${id}/${token}`
     //url:`https://programador-backend.onrender.com/reset-password/${id}/${token}`
-    url:`${URL}/reset-password/${id}/${token}`    
+    url: `${URL}/reset-password/${id}/${token}`
   }
   //fetch(`http://localhost:3001/reset-password/${id}/${token}`,options)
   axios(options)
@@ -34,7 +38,7 @@ export default function TokenExpired() {
       }
     })
   if (resetPassword) {
-    return <ResetPassword />    
+    return <ResetPassword />
   }
   else {
     return (

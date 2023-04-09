@@ -107,7 +107,12 @@ function Rejilla() {
         if (result.isConfirmed) {
           // fetch("http://localhost:3001/borrar-toda-programacion", {
           //fetch("https://programador-backend.onrender.com/borrar-toda-programacion", {
-            URL = process.env.REACT_APP_BASE_URL
+          if (process.env.REACT_APP_ENVIRONMENT === 'DEVELOPMENT') {
+            URL = "http://localhost:3001"
+          }
+          else {
+            URL = 'https://programador-backend.onrender.com'
+          }
           fetch(`${URL}/borrar-toda-programacion`, {
             method: 'PUT',
             headers: { "Content-Type": "application/json", "Accept": "application/json" },
@@ -478,7 +483,12 @@ function Rejilla() {
                   if (result.isConfirmed) {
                     // fetch("http://localhost:3001/borrar-curso", {
                     //fetch("https://programador-backend.onrender.com/borrar-curso", {
-                      URL = process.env.REACT_APP_BASE_URL
+                    if (process.env.REACT_APP_ENVIRONMENT === 'DEVELOPMENT') {
+                      URL = "http://localhost:3001"
+                    }
+                    else {
+                      URL = 'https://programador-backend.onrender.com'
+                    }
                     fetch(`${URL}/borrar-curso`, {
                       method: 'PUT',
                       headers: { "Content-Type": "application/json", "Accept": "application/json" },
@@ -892,7 +902,12 @@ function Rejilla() {
                         if (duracionCursoExacto === 0 && diaHorasDiariasIncompletas === 0) {
                           // fetch("http://localhost:3001/update-user", {
                           //fetch("https://programador-backend.onrender.com/update-user", {
-                            URL = process.env.REACT_APP_BASE_URL
+                          if (process.env.REACT_APP_ENVIRONMENT === 'DEVELOPMENT') {
+                            URL = "http://localhost:3001"
+                          }
+                          else {
+                            URL = 'https://programador-backend.onrender.com'
+                          }
                           fetch(`${URL}/update-user`, {
                             method: 'PUT',
                             headers: { "Content-Type": "application/json", "Accept": "application/json" },
@@ -927,7 +942,7 @@ function Rejilla() {
         <div className='HelpIcon'><HelpIcon sx={{ fontSize: 35 }}></HelpIcon><span className='HelpIconText'><QuizIcon></QuizIcon>Para crear o programar un curso haga click en la celda correspondiente a la fecha y hora de inicio.<br></br><br></br><QuizIcon></QuizIcon>Para borrar un curso específico haga click sobre el <strong>color</strong> del curso a borrar ubicado en la parte inferior, sobre las horas (ver imagen). Se le pedirá confirmación antes de borrar el curso.<br></br><img src="/colores-cursos.png" alt='logo' /></span></div>
         <div className='avatar'><Avatar sx={avatarStyle}><PersonIcon></PersonIcon></Avatar><span className='emailAvatar'>{Cookie.get('email')}</span></div>
         <div><h3>2023</h3></div>
-        <div><img src="/punticoVerde.png" alt='punticoVerde'/></div>       
+        <div><img src="/punticoVerde.png" alt='punticoVerde' /></div>
       </div>
       <CopyRight></CopyRight>
       <SessionExpired></SessionExpired>

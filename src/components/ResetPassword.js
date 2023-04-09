@@ -66,7 +66,12 @@ export default function ResetPassword() {
         }
         // fetch(`http://localhost:3001/reset-password/${id}`, {
         //fetch(`https://programador-backend.onrender.com/reset-password/${id}`, {
-            URL = process.env.REACT_APP_BASE_URL 
+        if (process.env.REACT_APP_ENVIRONMENT === 'DEVELOPMENT') {
+            URL = "http://localhost:3001"
+        }
+        else {
+            URL = 'https://programador-backend.onrender.com'
+        }
         fetch(`${URL}/reset-password/${id}`, {
             method: 'POST',
             headers: { "Content-Type": "Application/json" },
