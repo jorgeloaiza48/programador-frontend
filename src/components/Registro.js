@@ -63,6 +63,9 @@ function Registro() {
             if (process.env.REACT_APP_ENVIRONMENT === 'development'){
                 URL = process.env.REACT_APP_BASE_URL
             }
+            else{
+                URL = 'https://programador-backend.onrender.com/api/user'
+            }
             fetch(`${URL}/api/user`, {
                 method: 'PUT',
                 headers: { "Content-Type": "application/json", 'Accept': 'applicatio/json' },
