@@ -59,15 +59,16 @@ function Registro() {
         else {
             setIsLoading(true)
             //fetch('https://programador-backend.onrender.com/api/user', {
-            //fetch("http://localhost:3001/api/user", {   
-            if (process.env.REACT_APP_ENVIRONMENT === 'development'){
+            //fetch("http://localhost:3001/api/user", { 
+            console.log("process.env.REACT_APP_ENVIRONMENT-->> ", process.env.REACT_APP_ENVIRONMENT)
+            if (process.env.REACT_APP_ENVIRONMENT === 'DEVELOPMENT') {
                 // URL = process.env.REACT_APP_BASE_URL
                 URL = "http://localhost:3001"
             }
-            else{
+            else {
                 URL = 'https://programador-backend.onrender.com'
             }
-            console.log("URL-->> ",URL)
+            console.log("URL-->> ", URL)
             fetch(`${URL}/api/user`, {
                 method: 'PUT',
                 headers: { "Content-Type": "application/json", 'Accept': 'applicatio/json' },
