@@ -33,7 +33,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",    
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -58,6 +58,7 @@
   },
   "devDependencies": {
     "@babel/plugin-syntax-top-level-await": "^7.14.5",
-    "@craco/craco": "^7.0.0"
+    "@craco/craco": "^7.0.0",
+    "env-cmd": "^10.1.0"
   }
 }
