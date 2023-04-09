@@ -58,10 +58,7 @@ function Registro() {
         }
         else {
             setIsLoading(true)
-            fetch('https://programador-backend.onrender.com/api/user', {
-            //fetch("http://localhost:3001/api/user", {           
-            //URL = process.env.REACT_APP_BASE_URL
-            //fetch(`${URL}/api/user`, {
+            fetch('https://programador-backend.onrender.com/api/user', {           
                 method: 'PUT',
                 headers: { "Content-Type": "application/json", 'Accept': 'applicatio/json' },
                 body: JSON.stringify(userName)
