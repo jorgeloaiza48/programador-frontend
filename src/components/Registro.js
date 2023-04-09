@@ -61,11 +61,13 @@ function Registro() {
             //fetch('https://programador-backend.onrender.com/api/user', {
             //fetch("http://localhost:3001/api/user", {   
             if (process.env.REACT_APP_ENVIRONMENT === 'development'){
-                URL = process.env.REACT_APP_BASE_URL
+                // URL = process.env.REACT_APP_BASE_URL
+                URL = "http://localhost:3001"
             }
             else{
                 URL = 'https://programador-backend.onrender.com'
             }
+            console.log("URL-->> ",URL)
             fetch(`${URL}/api/user`, {
                 method: 'PUT',
                 headers: { "Content-Type": "application/json", 'Accept': 'applicatio/json' },
