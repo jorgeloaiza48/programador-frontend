@@ -64,7 +64,7 @@ function Registro() {
                 URL = process.env.REACT_APP_BASE_URL
             }
             else{
-                URL = 'https://programador-backend.onrender.com/api/user'
+                URL = 'https://programador-backend.onrender.com'
             }
             fetch(`${URL}/api/user`, {
                 method: 'PUT',
