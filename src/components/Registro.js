@@ -59,13 +59,8 @@ function Registro() {
         else {
             setIsLoading(true)
             //fetch('https://programador-backend.onrender.com/api/user', {
-            //fetch("http://localhost:3001/api/user", {            
-            if (process.env.REACT_APP_ENVIRONMENT === 'DEVELOPMENT') {                
-                URL = "http://localhost:3001"
-            }
-            else {
-                URL = 'https://programador-backend.onrender.com'
-            }            
+            //fetch("http://localhost:3001/api/user", {                        
+            URL =   process.env.REACT_APP_ENVIRONMENT   //Cuando se ejecuta npm start, se carga el archivo ".development.env" que a su vez carga el valor "http://localhost:3001"  Cuando se ejecuta "npm run build" se carga el archivo ".production.env"  que a su vez carga el valor "https://programador-backend.onrender.com"
             fetch(`${URL}/api/user`, {
                 method: 'PUT',
                 headers: { "Content-Type": "application/json", 'Accept': 'applicatio/json' },
@@ -91,6 +86,12 @@ function Registro() {
                         //navigate('/registro');
                     }
                 })
+                .catch(() => Swal.fire({
+                    title: "No se puedo realizar la operación por un error",
+                    icon: "error"
+                }),
+                    window.location.hash = '/login'
+                )
         }
     };
 

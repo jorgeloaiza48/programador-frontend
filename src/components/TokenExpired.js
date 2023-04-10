@@ -16,12 +16,8 @@ export default function TokenExpired() {
   let URL = ""
   const [resetPassword, setResetpassword] = useState(false)
   const { id, token } = useParams() //useParams returns an object with value/key pairs of the dinamic params from the current URL
-  if (process.env.REACT_APP_ENVIRONMENT === 'DEVELOPMENT') {
-    URL = "http://localhost:3001"
-  }
-  else {
-    URL = 'https://programador-backend.onrender.com'
-  }
+  
+  URL =   process.env.REACT_APP_ENVIRONMENT //Cuando se ejecuta npm start, se carga el archivo ".development.env" que a su vez carga el valor "http://localhost:3001"  Cuando se ejecuta "npm run build" se carga el archivo ".production.env"  que a su vez carga el valor "https://programador-backend.onrender.com"
   let options = {
     method: 'GET',
     headers: { "Content-Type": "Application/json" },

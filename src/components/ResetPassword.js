@@ -65,13 +65,8 @@ export default function ResetPassword() {
             return
         }
         // fetch(`http://localhost:3001/reset-password/${id}`, {
-        //fetch(`https://programador-backend.onrender.com/reset-password/${id}`, {
-        if (process.env.REACT_APP_ENVIRONMENT === 'DEVELOPMENT') {
-            URL = "http://localhost:3001"
-        }
-        else {
-            URL = 'https://programador-backend.onrender.com'
-        }
+        //fetch(`https://programador-backend.onrender.com/reset-password/${id}`, {        
+        URL =   process.env.REACT_APP_ENVIRONMENT //Cuando se ejecuta npm start, se carga el archivo ".development.env" que a su vez carga el valor "http://localhost:3001"  Cuando se ejecuta "npm run build" se carga el archivo ".production.env"  que a su vez carga el valor "https://programador-backend.onrender.com"
         fetch(`${URL}/reset-password/${id}`, {
             method: 'POST',
             headers: { "Content-Type": "Application/json" },

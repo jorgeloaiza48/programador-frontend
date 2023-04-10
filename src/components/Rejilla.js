@@ -106,13 +106,8 @@ function Rejilla() {
       .then((result) => {
         if (result.isConfirmed) {
           // fetch("http://localhost:3001/borrar-toda-programacion", {
-          //fetch("https://programador-backend.onrender.com/borrar-toda-programacion", {
-          if (process.env.REACT_APP_ENVIRONMENT === 'DEVELOPMENT') {
-            URL = "http://localhost:3001"
-          }
-          else {
-            URL = 'https://programador-backend.onrender.com'
-          }
+          //fetch("https://programador-backend.onrender.com/borrar-toda-programacion", {          
+          URL =   process.env.REACT_APP_ENVIRONMENT 
           fetch(`${URL}/borrar-toda-programacion`, {
             method: 'PUT',
             headers: { "Content-Type": "application/json", "Accept": "application/json" },
@@ -482,13 +477,8 @@ function Rejilla() {
                 .then((result) => {
                   if (result.isConfirmed) {
                     // fetch("http://localhost:3001/borrar-curso", {
-                    //fetch("https://programador-backend.onrender.com/borrar-curso", {
-                    if (process.env.REACT_APP_ENVIRONMENT === 'DEVELOPMENT') {
-                      URL = "http://localhost:3001"
-                    }
-                    else {
-                      URL = 'https://programador-backend.onrender.com'
-                    }
+                    //fetch("https://programador-backend.onrender.com/borrar-curso", {                    
+                    URL =   process.env.REACT_APP_ENVIRONMENT 
                     fetch(`${URL}/borrar-curso`, {
                       method: 'PUT',
                       headers: { "Content-Type": "application/json", "Accept": "application/json" },
@@ -901,13 +891,8 @@ function Rejilla() {
                         //Cuando hay un cruce de horas entonces no ingresa a este if porque "duracionCursoExacto no queda en cero" y por lo tanto no se envía nada al backend
                         if (duracionCursoExacto === 0 && diaHorasDiariasIncompletas === 0) {
                           // fetch("http://localhost:3001/update-user", {
-                          //fetch("https://programador-backend.onrender.com/update-user", {
-                          if (process.env.REACT_APP_ENVIRONMENT === 'DEVELOPMENT') {
-                            URL = "http://localhost:3001"
-                          }
-                          else {
-                            URL = 'https://programador-backend.onrender.com'
-                          }
+                          //fetch("https://programador-backend.onrender.com/update-user", {                          
+                          URL =   process.env.REACT_APP_ENVIRONMENT //Cuando se ejecuta npm start, se carga el archivo ".development.env" que a su vez carga el valor "http://localhost:3001"  Cuando se ejecuta "npm run build" se carga el archivo ".production.env"  que a su vez carga el valor "https://programador-backend.onrender.com"
                           fetch(`${URL}/update-user`, {
                             method: 'PUT',
                             headers: { "Content-Type": "application/json", "Accept": "application/json" },
