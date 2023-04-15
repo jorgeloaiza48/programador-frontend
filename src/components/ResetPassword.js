@@ -66,7 +66,7 @@ export default function ResetPassword() {
         }
         // fetch(`http://localhost:3001/reset-password/${id}`, {
         //fetch(`https://programador-backend.onrender.com/reset-password/${id}`, {        
-        URL =   process.env.REACT_APP_ENVIRONMENT //Cuando se ejecuta npm start, se carga el archivo ".development.env" que a su vez carga el valor "http://localhost:3001"  Cuando se ejecuta "npm run build" se carga el archivo ".production.env"  que a su vez carga el valor "https://programador-backend.onrender.com"
+        URL = process.env.REACT_APP_ENVIRONMENT //Cuando se ejecuta npm start, se carga el archivo ".development.env" que a su vez carga el valor "http://localhost:3001"  Cuando se ejecuta "npm run build" se carga el archivo ".production.env"  que a su vez carga el valor "https://programador-backend.onrender.com"
         fetch(`${URL}/reset-password/${id}`, {
             method: 'POST',
             headers: { "Content-Type": "Application/json" },
@@ -93,33 +93,36 @@ export default function ResetPassword() {
 
     return (
         <div className='formRegistro'>
-            <Link to="/">
-                <div className='divHome'>
+
+            <div className='divHomeResetPass'>
+                <Link to="/">
                     <CottageIcon sx={{ fontSize: 40 }}></CottageIcon>
                     <p><strong>Inicio</strong></p>
-                </div>
-            </Link>
-            <form >
+                </Link>
                 <LockResetIcon className='LockResetIcon' sx={{ fontSize: 45 }}></LockResetIcon>
                 <Link to="/login"><div className='logInResetPassword'><LoginIcon sx={{ fontSize: 35 }}></LoginIcon><p>Log in</p></div></Link>
+            </div>
+
+            <form >
                 <h4 className='textoReseteoContraseña'>Recuperación de Contraseña</h4>
-                <div className='containerPrincipalResetPassword border rounded'>
-                    <div classname='containerSecundario'>
-                        <div className='form-group d-grid gap-2'>
-                            <label>Contraseña</label>
-                            <input type={showPassword ? "password" : "text"} className='form-control' name='password' onChange={handleChange} onClick={handleClick} placeholder="Digite una contraseña" /> <br />
-                            <p className='errorEmailOlvidoPassword'>{errorPassword}</p>
-                            <label>Confirme Contraseña</label>
-                            <input type={showPasswordConfirm ? "password" : "text"} className='form-control' name='confirmpassword' onChange={handleChange} onClick={handleClick} placeholder="Confirme la contraseña" /> <br />
-                            <p className='errorEmailOlvidoPassword'>{errorConfirmPassword}</p>
-                            <button type="submit" className='btn btn-primary' onClick={handleSubmit}>Enviar</button>
-                            <SyncLockIcon className='SyncLockIconResetPassword' onClick={handleShowPassword}></SyncLockIcon>
-                            <SyncLockIcon className='SyncLockIconResetPassword2' onClick={handleShowPasswordConfirm}></SyncLockIcon>
-                        </div>
+                <div className='containerResetPass'>
+                    <div>
+                        <label>Contraseña</label>
+                        <input type={showPassword ? "password" : "text"} className='form-control' name='password' onChange={handleChange} onClick={handleClick} placeholder="Digite una contraseña" /> <br />
                     </div>
+                    <p className='errorEmailOlvidoPassword1'>{errorPassword}</p>
+                    <div>
+                        <label>Confirme Contraseña</label>
+                        <input type={showPasswordConfirm ? "password" : "text"} className='form-control' name='confirmpassword' onChange={handleChange} onClick={handleClick} placeholder="Confirme la contraseña" /> <br />
+                    </div>
+                    <p className='errorEmailOlvidoPassword2'>{errorConfirmPassword}</p>
+                    <button type="submit" className='btn btn-primary' onClick={handleSubmit}>Enviar</button>
+                    <SyncLockIcon className='SyncLockIconResetPassword' onClick={handleShowPassword}></SyncLockIcon>
+                    <SyncLockIcon className='SyncLockIconResetPassword2' onClick={handleShowPasswordConfirm}></SyncLockIcon>
+
                 </div>
             </form>
-            <CopyRight></CopyRight>
+            <div className='copyRightResetPass'><CopyRight></CopyRight></div>
         </div>
     )
 }

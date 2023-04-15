@@ -1,55 +1,170 @@
-.containerPrincipal {
-    border: solid 2px red;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    padding: 40px;
-    background-color: white;
-    border: solid 2px blue;
+@media(min-width: 360px) {
+    .botonRegistrarse button {
+        width: 100%;
+    }
+
+    .containerPrincipalRegistro {
+        border: solid 1px gainsboro;
+        border-radius: 2%;
+        display: flex;
+        flex-direction: column;
+        margin: 0 auto;
+        width: 95%;
+        background-color: white;
+    }
+
+    .containerPrincipalRegistro div {
+        margin: 6%;
+    }
+
+    .copyRightRegistro {
+        position: fixed;
+        left: -28%;
+        top: 90%;
+    }
+
+    .conatinerSecundario {
+        text-align: center;
+    }
+
+    .personAddIcon {
+        left: 72%;
+        position: absolute;
+        top: 5%;
+    }
+
+    form .registro {
+        left: 28%;
+        position: absolute;
+        top: 12%;
+    }
+
+    form .errorPassword {
+        color: red;
+        font-size: 12px;
+        margin-top: -40px;
+    }
+
+    .formRegistro {
+        border-radius: 9px 9px 9px 9px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        margin: 20px;
+        height: 558px;
+    }
+
+    .MailOutlineIconRegister {
+        left: 77%;
+        position: fixed;
+        top: 27%;
+    }
+
+    .VpnKeyIconRegister {
+        left: 77%;
+        position: fixed;
+        top: 46%;
+    }
+
+    .errorEmailRegister {
+        color: red;
+        font-size: 12px;
+        left: 14%;
+        top: 32%;
+        position: absolute;
+    }
+
+    .errorPasswordRegister {
+        color: red;
+        font-size: 12px;
+        margin-top: -40px;
+        left: 14%;
+        position: absolute;
+        top: 57%;
+    }
+
 }
 
-.conatinerSecundario {
-    text-align: center;
-}
+@media(min-width: 576px) {
+    .personAddIcon {
+        left: 82%;
+    }
 
-.personAddIcon {
-    margin-left: 46%;
-    position: absolute;
-    top: 5%;
-}
-
-form .registro {
-    margin-left: 45%;
-    position: absolute;
-    top: 12%;
-}
-form .errorPassword{
-    color: red;
-    font-size:12px;
-    margin-top: -40px;
-}
-.formRegistro{
-    border-radius: 9px 9px 9px 9px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    margin: 20px;
-    height: 558px;
-}
-.MailOutlineIconRegister{
-    left: 84%;
-    position:fixed;
-    top: 22%;    
-}
-.VpnKeyIconRegister{
-    left: 84%;
-    position:fixed;
-    top: 51%;   
-}
-.formRegistro form .errorPasswordRegister,
-.errorEmailRegister {
-    color: red;
-    font-size: 12px;
-    margin-top: -40px;
-}
-
+    form .registro {
+        left: 37%;
+    }
+    .containerPrincipalRegistro{
+        height: 405px;
+    }
     
+    .copyRightRegistro {    
+        left: -14%;     
+        top: 93%;
+    }
+    .containerPrincipalRegistro .IniciarSesion{        
+        margin-top: 2%;
+    }
+    .MailOutlineIconRegister {  
+        left: 83%;  
+        top: 29%;
+    }
+
+    .VpnKeyIconRegister {   
+        left: 83%;       
+        top: 52%;
+    }
+    .errorEmailRegister {        
+        left: 12%;
+        top: 34%;
+      
+    }
+
+    .errorPasswordRegister {   
+        left: 12% ;    
+        top: 63%;
+    }
+}
+
+@media(min-width: 768px) {
+form .registro {
+    left: 40%;   
+}
+.MailOutlineIconRegister {
+    left: 86%;  
+    top: 27%;
+}
+.VpnKeyIconRegister {   
+    left: 86%;       
+    top: 47%;
+}
+.errorEmailRegister {            
+    left: 8%;
+    top: 32%;  
+}
+
+.errorPasswordRegister {       
+    left: 8%;
+    top: 58%;
+}
+.containerPrincipalRegistro div {
+    margin: 3%;
+}
+}
+@media(min-width: 992px) {
+    .MailOutlineIconRegister {
+        left: 88%;  
+        top: 28%;
+    }
+    .VpnKeyIconRegister {   
+        left: 88%;       
+        top: 50%;
+    }
+    .errorEmailRegister {            
+        left: 8%;
+        top: 33%;  
+    }
+    
+    .errorPasswordRegister {       
+        left: 8%;
+        top: 61%;
+    }
+   
+}

@@ -1,62 +1,257 @@
-.containerPrincipal {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    padding: 40px;
-    background-color: white;
-    width: 33%;
+@media(min-width: 360px) {
+    .containerPrincipalLogin {
+        border: solid 1px gainsboro;
+        border-radius: 2%;
+        display: flex;
+        flex-direction: column;
+        background-color: white;
+        margin: 0 auto;
+        width: 90%;
+    }
+
+    .containerPrincipalLogin div {
+        margin: 4%;
+    }
+
+    .containerPrincipalLogin button {
+        width: 100%;
+    }
+
+    .copyRightLogin {
+        top: 93%;
+        left: -28%;
+        position: fixed;
+    }
+
+    .usuarioLogin {
+        margin-bottom: 15px;
+        position: fixed;
+        left: 2%;
+        width: 95%;
+    }
+
+    .passLogin {
+        margin-top: 95px;
+        position: fixed;
+        left: 2%;
+        width: 95%;
+    }
+
+    .conatinerSecundario {
+        text-align: center;
+    }
+
+    .loginIcon {
+        position: absolute;
+        right: 29%;
+        top: 7%;
+    }
+
+    form .inicioSesion {
+        margin-left: 42%;
+        position: absolute;
+        top: 13%;
+    }
+
+    form .errorEmailLogin {
+        color: red;
+        font-size: 12px;
+        left: 49px;
+        margin-top: 75px;
+        position: fixed;
+    }
+
+    form .errorPasswordLogin {
+        color: red;
+        font-size: 12px;
+        left: 49px;
+        margin-top: 190px;
+        position: fixed;
+    }
+
+
+    .MailOutlineIconLogin {
+        left: 79%;
+        position: absolute;
+        top: 26%;
+    }
+
+    .PasswordIconLogin {
+        left: 79%;
+        position: fixed;
+        top: 43%;
+    }
+
+    .formLogin {
+        border-radius: 9px 9px 9px 9px;
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        height: 500px;
+        margin: 20px;
+    }
+
+    .divHome {
+        padding-left: 30px;
+        padding-top: 20px;
+        width: fit-content;
+    }
+
+    .regisOlvido {
+        display: flex;
+    }
+
+    .regisOlvido .olvido {
+        padding-left: 20%;
+    }
 }
 
-.conatinerSecundario {
-    text-align: center;
+@media(min-width: 576px) {
+    .containerPrincipalLogin {
+        height: 360px;
+    }
+
+    .copyRightLogin {
+        top: 93%;
+        left: -15%;
+        position: fixed;
+    }
+
+    .loginIcon {
+        position: absolute;
+        right: 10%;
+        top: 7%;
+    }
+
+    .formLogin {
+        height: 530px;
+    }
+
+    form .inicioSesion {
+        left: 22%;
+        position: absolute;
+        top: 14%;
+    }
+
+    form .errorEmailLogin {
+        color: red;
+        font-size: 12px;
+        left: 68px;
+        margin-top: 85px;
+        position: fixed;
+    }
+
+    form .errorPasswordLogin {
+        color: red;
+        font-size: 12px;
+        left: 68px;
+        margin-top: 213px;
+        position: fixed;
+    }
+
+    .MailOutlineIconLogin {
+        left: 83%;
+        position: absolute;
+        top: 27%;
+    }
+
+    .PasswordIconLogin {
+        left: 83%;
+        position: fixed;
+        top: 47%;
+    }
+
 }
 
-.loginIcon {
-    margin-left: 45%;
-    position: absolute;
-    top: 5%;
+@media(min-width: 768px) {
+    form .inicioSesion {
+        left: 29%;
+        position: absolute;
+        top: 13%;
+    }
+
+    .containerPrincipalLogin .buttonLogin {
+        margin-top: -1%;
+
+    }
+
+    .copyRightLogin {
+        top: 93%;
+        left: -10%;
+        position: fixed;
+    }
+    form .errorEmailLogin {
+        color: red;
+        font-size: 12px;
+        left: 86px;
+        margin-top: 93px;
+        position: fixed;
+    }
+
+    form .errorPasswordLogin {
+        color: red;
+        font-size: 12px;
+        left: 86px;
+        margin-top: 235px;
+        position: fixed;
+    }
+    .MailOutlineIconLogin {
+        left: 85%;
+        position: absolute;
+        top: 28%;
+    }
+
+    .PasswordIconLogin {
+        left: 85%;
+        position: absolute;
+        top: 50%;
+    }
+
+    .regisOlvido {
+        justify-content: space-between;
+    }
+
+    .regisOlvido div {
+        margin-top: -10px;
+    }
 }
 
-form .inicioSesion {
-    margin-left: 42%;
-    position: absolute;
-    top: 12%;
-}
+@media(min-width: 992px) {
+    .containerPrincipalLogin {
+        height: 380px;
+    }
+    form .errorEmailLogin {
+        color: red;
+        font-size: 12px;
+        left: 105px;
+        margin-top: 100px;
+        position: fixed;
+    }
 
-form .errorPasswordLogin,
-.errorEmailLogin {
-    color: red;
-    font-size: 12px;
-    margin-top: -40px;
-}
+    form .errorPasswordLogin {
+        color: red;
+        font-size: 12px;
+        left: 105px;
+        margin-top: 259px;
+        position: fixed;
+    }
+    .formLogin {
+        height: 552px;
+    }
 
-.regPass {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 3%;
-}
+    form .inicioSesion {
+        margin-left: 44%;
+    }
 
-.MailOutlineIconLogin {
-    left: 84%;
-    position: fixed;
-    top: 21%;
-}
+    .MailOutlineIconLogin {
+        left: 86%;
+        top: 30%;
+    }
 
-.PasswordIconLogin {
-    left: 84%;
-    position: fixed;
-    top: 51%;
-}
+    .PasswordIconLogin {
+        left: 86%;
+        top: 54%;
+    }
 
-.formLogin {    
-    border-radius: 9px 9px 9px 9px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    height: 558px;
-    margin: 20px;
-}
-.divHome{   
-    padding-left: 30px;
-    padding-top: 20px;    
-    width: fit-content;
+    .regPass {
+        left: 15%;
+    }
 }

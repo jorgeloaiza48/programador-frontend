@@ -16,8 +16,8 @@ export default function TokenExpired() {
   let URL = ""
   const [resetPassword, setResetpassword] = useState(false)
   const { id, token } = useParams() //useParams returns an object with value/key pairs of the dinamic params from the current URL
-  
-  URL =   process.env.REACT_APP_ENVIRONMENT //Cuando se ejecuta npm start, se carga el archivo ".development.env" que a su vez carga el valor "http://localhost:3001"  Cuando se ejecuta "npm run build" se carga el archivo ".production.env"  que a su vez carga el valor "https://programador-backend.onrender.com"
+
+  URL = process.env.REACT_APP_ENVIRONMENT //Cuando se ejecuta npm start, se carga el archivo ".development.env" que a su vez carga el valor "http://localhost:3001"  Cuando se ejecuta "npm run build" se carga el archivo ".production.env"  que a su vez carga el valor "https://programador-backend.onrender.com"
   let options = {
     method: 'GET',
     headers: { "Content-Type": "Application/json" },
@@ -39,14 +39,14 @@ export default function TokenExpired() {
   else {
     return (
       <div className='DivbotonesEnlaceNoValido'>
-        <LinkOffIcon className='LinkOffIcon' sx={{ fontSize: 120 }}></LinkOffIcon>
-        <h1>¡El enlace ya no es válido!</h1>
+        <div className='LinkOffIcon'><LinkOffIcon sx={{ fontSize: 120 }}></LinkOffIcon></div>
+        <div><h1>¡El enlace ya no es válido!</h1></div>
         <div className='botonesEnlaceNoValido'>
           <Link to="/login"><button class="btn btn-primary">{<LoginIcon />} Iniciar sesión</button></Link>
           <Link to="/registro"><button class="btn btn-success" >{<PersonAddIcon />}Registrarse</button></Link>
-          <Link to="/olvidoPassword"><button class="btn btn-warning" >{<SyncIcon />}Recuperar contraseña</button></Link>
+          <div><Link to="/olvidoPassword"><button class="btn btn-warning" >{<SyncIcon />}Recuperar contraseña</button></Link></div>
         </div>
-        <CopyRight></CopyRight>
+        <div className='copyRightTokenExpired'><CopyRight></CopyRight></div>
       </div>
     )
   }

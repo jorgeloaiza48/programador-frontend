@@ -23,13 +23,13 @@ function Inicio() {
     return (
         <div className='DivBotonesInicio'>
             <div><CalendarMonthIcon sx={{ fontSize: 150 }}></CalendarMonthIcon></div>
-            <h1>Programador de cursos</h1>
+            <div><h1>Programador de cursos</h1></div>
             <div className='botonesInicio'>
-                <Link to="/login"><button class="btn btn-primary">{<LoginIcon />} Iniciar sesión</button></Link>
-                <Link to="/registro"><button class="btn btn-success" >{<PersonAddIcon />}Registrarse</button></Link>
+                <div><Link to="/login"><button class="btn btn-primary btn-sm">{<LoginIcon />} Iniciar sesión</button></Link></div>
+                <div><Link to="/registro"><button class="btn btn-success btn-sm" >{<PersonAddIcon />}Registrarse</button></Link></div>
             </div>
 
-            <CopyRight ></CopyRight>
+           <div className='CopyRightInicio'><CopyRight></CopyRight></div>
 
         </div>
     )

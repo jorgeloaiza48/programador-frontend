@@ -274,7 +274,7 @@ function Rejilla() {
 
     <div className="rejilla" >
 
-      <h4>Bienvenido {Cookie.get('email')}</h4>
+      <div className='bienvenidoRejilla'><h4>Bienvenido {Cookie.get('email')}</h4></div>
 
       <HotTable
         ref={hot}
@@ -929,7 +929,7 @@ function Rejilla() {
         <div><h3>2023</h3></div>
         <div><img src="/punticoVerde.png" alt='punticoVerde' /></div>
       </div>
-      <CopyRight></CopyRight>
+      <div className='copyRightRejilla'><CopyRight></CopyRight></div>
       <SessionExpired></SessionExpired>
     </div>
 

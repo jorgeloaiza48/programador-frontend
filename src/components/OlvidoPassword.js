@@ -41,7 +41,7 @@ export default function OlvidoPassword() {
         setIsLoading(true)
         // fetch('http://localhost:3001/forgot-password', {
         //fetch('https://programador-backend.onrender.com/forgot-password', {            
-        URL =   process.env.REACT_APP_ENVIRONMENT  //Cuando se ejecuta npm start, se carga el archivo ".development.env" que a su vez carga el valor "http://localhost:3001"  Cuando se ejecuta "npm run build" se carga el archivo ".production.env"  que a su vez carga el valor "https://programador-backend.onrender.com"
+        URL = process.env.REACT_APP_ENVIRONMENT  //Cuando se ejecuta npm start, se carga el archivo ".development.env" que a su vez carga el valor "http://localhost:3001"  Cuando se ejecuta "npm run build" se carga el archivo ".production.env"  que a su vez carga el valor "https://programador-backend.onrender.com"
         fetch(`${URL}/forgot-password`, {
             method: 'POST',
             headers: { "Content-Type": "Application/json" },
@@ -77,29 +77,33 @@ export default function OlvidoPassword() {
 
     return (
         <div className='formOlvidoPassword'>
-            <Link to="/">
-                <div className='divHome'>
-                    <CottageIcon sx={{ fontSize: 40 }}></CottageIcon>
-                    <p><strong>Inicio</strong></p>
-                </div>
-            </Link>
-            <form >
-                <KeyIcon className='keyIcon' sx={{ fontSize: 45 }}></KeyIcon>
-                <h4 className='textoOlvidoContraseña'>Cambio de contraseña</h4>
-                <div className='containerPrincipal border rounded'>
-                    <div classname='containerSecundario'>
-                        <div className='form-group d-grid gap-2'>
-                            <label>Email</label>
-                            <input type="email" className='form-control' name='email' onChange={handleChange} onClick={handleClick} placeholder="Digite una dirección de correo" required /> <br />
-                            <p className='errorEmailOlvidoPassword'>{errorEmail}</p>
-                            <button type="submit" className='btn btn-primary' onClick={cambiarContraseña}>Enviar</button>
-                            <Link to="/login">Iniciar Sesión</Link>
-                            <MailOutlineIcon className='MailOutlineIconForgotPassword'></MailOutlineIcon>
-                        </div>
+            <div className='divHomeOlvidoPass'>
+                <Link to="/">
+                    <div>
+                        <CottageIcon sx={{ fontSize: 40 }}></CottageIcon>
+                        <p><strong>Inicio</strong></p>
                     </div>
+                </Link>
+                <div>
+                    <KeyIcon className='keyIcon' sx={{ fontSize: 45 }}></KeyIcon>
+                    <p>Cambio de contraseña</p>
+                </div>
+            </div>
+
+            <form>
+
+                <div className='containerPrincipalOlvidoPass'>
+                    <div className='emailOvidoPass'>
+                        <label>Email</label>
+                        <input type="email" className='form-control' name='email' onChange={handleChange} onClick={handleClick} placeholder="Digite una dirección de correo" required /> <br />
+                    </div>
+                    <p className='errorEmailOlvidoPassword'>{errorEmail}</p>
+                    <div><button type="submit" className='btn btn-primary' onClick={cambiarContraseña}>Enviar</button></div>
+                    <div><Link to="/login">Iniciar Sesión</Link></div>
+                    <MailOutlineIcon className='MailOutlineIconForgotPassword'></MailOutlineIcon>
                 </div>
             </form>
-            <CopyRight></CopyRight>
+            <div className='copyRightOlvidoPass'><CopyRight></CopyRight></div>
         </div>
     )
 }

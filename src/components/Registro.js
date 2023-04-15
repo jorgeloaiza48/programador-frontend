@@ -60,7 +60,7 @@ function Registro() {
             setIsLoading(true)
             //fetch('https://programador-backend.onrender.com/api/user', {
             //fetch("http://localhost:3001/api/user", {                        
-            URL =   process.env.REACT_APP_ENVIRONMENT   //Cuando se ejecuta npm start, se carga el archivo ".development.env" que a su vez carga el valor "http://localhost:3001"  Cuando se ejecuta "npm run build" se carga el archivo ".production.env"  que a su vez carga el valor "https://programador-backend.onrender.com"
+            URL = process.env.REACT_APP_ENVIRONMENT   //Cuando se ejecuta npm start, se carga el archivo ".development.env" que a su vez carga el valor "http://localhost:3001"  Cuando se ejecuta "npm run build" se carga el archivo ".production.env"  que a su vez carga el valor "https://programador-backend.onrender.com"
             fetch(`${URL}/api/user`, {
                 method: 'PUT',
                 headers: { "Content-Type": "application/json", 'Accept': 'applicatio/json' },
@@ -112,24 +112,23 @@ function Registro() {
             <form onSubmit={handleSubmit}>
                 <PersonAddIcon className='personAddIcon' sx={{ fontSize: 45 }}></PersonAddIcon>
                 <h4 className='registro'>Registro</h4>
-                <div className='containerPrincipal border rounded'>
-                    <div classname='containerSecundario'>
-                        <div className='form-group d-grid gap-2'>
-                            <label>Email:</label>
-                            <input type="email" className='form-control' name='email' onChange={handleChange} onClick={handleClickEmail} placeholder="Digite una dirección de correo." /> <br />
-                            <p className='errorEmailRegister'>{errorEmail}</p>
-                            <label>Contraseña</label>
-                            <input type={showPassword ? "password" : "text"} className='form-control' name='password' onChange={handleChange} onClick={handleClickPassword} placeholder="Digite una contraseña de 5 caracteres o más." /> <br />
-                            <p className='errorPasswordRegister'>{errorPassword}</p>
-                            <button type="submit" className='btn btn-primary'>Registrarse</button>
-                            <Link to="/login">Iniciar Sesión</Link>
-                            <MailOutlineIcon className='MailOutlineIconRegister'></MailOutlineIcon>
-                            <VpnKeyIcon className='VpnKeyIconRegister' onClick={handleShowPassword}></VpnKeyIcon>
-                        </div>
+                <div className='containerPrincipalRegistro'>
+                    <div>
+                        <label>Email:</label>
+                        <input type="email" className='form-control' name='email' onChange={handleChange} onClick={handleClickEmail} placeholder="Digite correo" /> <br />
                     </div>
+                    <p className='errorEmailRegister'>{errorEmail}</p>
+                    <div><label>Contraseña</label>
+                        <input type={showPassword ? "password" : "text"} className='form-control' name='password' onChange={handleChange} onClick={handleClickPassword} placeholder="Digite contraseña " /> <br />
+                    </div>
+                    <p className='errorPasswordRegister'>{errorPassword}</p>
+                    <div className='botonRegistrarse'><button type="submit" className='btn btn-primary'>Registrarse</button></div>
+                    <div className='IniciarSesion'><Link to="/login">Iniciar Sesión</Link></div>
                 </div>
+                <MailOutlineIcon className='MailOutlineIconRegister'></MailOutlineIcon>
+                <VpnKeyIcon className='VpnKeyIconRegister' onClick={handleShowPassword}></VpnKeyIcon>
             </form>
-            <CopyRight></CopyRight>
+            <div className='copyRightRegistro'><CopyRight></CopyRight></div>
         </div>
     )
 }

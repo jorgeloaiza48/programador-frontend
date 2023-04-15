@@ -60,7 +60,7 @@ export default function Login() {
         }
         //fetch("http://localhost:3001/login", {
         //fetch("https://programador-backend.onrender.com/login", {          
-        URL =   process.env.REACT_APP_ENVIRONMENT //Cuando se ejecuta npm start, se carga el archivo ".development.env" que a su vez carga el valor "http://localhost:3001"  Cuando se ejecuta "npm run build" se carga el archivo ".production.env"  que a su vez carga el valor "https://programador-backend.onrender.com"
+        URL = process.env.REACT_APP_ENVIRONMENT //Cuando se ejecuta npm start, se carga el archivo ".development.env" que a su vez carga el valor "http://localhost:3001"  Cuando se ejecuta "npm run build" se carga el archivo ".production.env"  que a su vez carga el valor "https://programador-backend.onrender.com"
         fetch(`${URL}/login`, { //variable de entorno. Ver archivo ".env-cmdrc"
             method: 'POST',
             headers: { "Content-Type": "Application/json", "Accept": "application/json" },
@@ -114,27 +114,27 @@ export default function Login() {
             <form onSubmit={iniciarSesion}>
                 <LoginIcon className='loginIcon' sx={{ fontSize: 45 }}></LoginIcon>
                 <h4 className='inicioSesion'>Inicio de sesión</h4>
-                <div className='containerPrincipal border rounded'>
-                    <div classname='containerSecundario'>
-                        <div className='form-group d-grid gap-2'>
-                            <label>Usuario o email:</label>
-                            <input type="email" className='form-control' name='email' onChange={handleChange} onClick={handleClickEmail} autoComplete="on" placeholder='Ingrese usuario' /> <br />
-                            <p className='errorEmailLogin'>{errorEmail}</p>
-                            <label>Contraseña:</label>
-                            <input type={showPassword ? "password" : "text"} className='form-control' name='password' onChange={handleChange} onClick={handleClickPassword} autoComplete="on" placeholder='Ingrese contraseña' /> <br />
-                            <p className='errorPasswordLogin'>{errorPassword}</p>
-                            <button type="submit" className='btn btn-primary' >Iniciar Sesión</button>
-                            <div className='regPass'>
-                                <Link to="/registro">Registrarse</Link>
-                                <Link to="/olvidoPassword">¿Olvidó la contraseña?</Link>
-                            </div>
-                            <MailOutlineIcon className='MailOutlineIconLogin'></MailOutlineIcon>
-                            <PasswordIcon className='PasswordIconLogin' onClick={handleShowPassword}></PasswordIcon>
-                        </div>
+                <div className='containerPrincipalLogin '>
+                    <div >
+                        <label>Usuario o email:</label>
+                        <input type="email" className='form-control' name='email' onChange={handleChange} onClick={handleClickEmail} autoComplete="on" placeholder='Ingrese usuario' /> <br />
                     </div>
+                    <p className='errorEmailLogin'>{errorEmail}</p>
+                    <div >
+                        <label>Contraseña:</label>
+                        <input type={showPassword ? "password" : "text"} className='form-control' name='password' onChange={handleChange} onClick={handleClickPassword} autoComplete="on" placeholder='Ingrese contraseña' /> <br />
+                    </div>
+                    <p className='errorPasswordLogin'>{errorPassword}</p>
+                    <div className='buttonLogin'><button type="submit" className='btn btn-primary' >Iniciar Sesión</button></div>
+                    <div className='regisOlvido'>
+                        <div className='registrarse'><Link to="/registro">Registrarse</Link></div>
+                        <div className='olvido'><Link to="/olvidoPassword">¿Olvidó la contraseña?</Link></div>
+                    </div>
+                    <MailOutlineIcon className='MailOutlineIconLogin'></MailOutlineIcon>
+                    <PasswordIcon className='PasswordIconLogin' onClick={handleShowPassword}></PasswordIcon>
                 </div>
             </form>
-            <CopyRight></CopyRight>
+            <div className='copyRightLogin'><CopyRight></CopyRight></div>
         </div>
     )
 }

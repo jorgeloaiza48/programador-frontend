@@ -1,191 +1,230 @@
-.rejilla {  
-  margin-top: 5%;
-  margin-left: 1%;
- }
+@media(min-width: 360px) {
+  .rejilla {
+    margin-top: 7%;
+    margin-left: 1%;
+  }
 
-.handsontable .celdas {
-  background-color: rgb(230, 62, 154);
-}
+  .handsontable .celdas {
+    background-color: rgb(230, 62, 154);
+  }
 
-.handsontable .colorMeses {
-  color: white;
-}
+  .handsontable .colorMeses {
+    color: white;
+  }
 
-.custom-table thead th:nth-child(odd),
-.custom-table tbody tr:nth-child(even) th {
-  background-color: blue;
-}
+  .custom-table thead th:nth-child(odd),
+  .custom-table tbody tr:nth-child(even) th {
+    background-color: blue;
+  }
 
-.handsontable .borders {  
-  border-style: groove;
-}
+  .handsontable .borders {
+    border-style: groove;
+  }
 
-.handsontable .centrarTexto {
-  border: solid 2px blue;
-  text-align: center;
-}
+  .handsontable .centrarTexto {
+    border: solid 2px blue;
+    text-align: center;
+  }
 
-.handsontable .colorDeRelleno {
-  background-color: blue;
-}
+  .handsontable .colorDeRelleno {
+    background-color: blue;
+  }
 
-.handsontable .centrarTexto {
-  text-align: center;
-}
+  .handsontable .centrarTexto {
+    text-align: center;
+  }
 
-.logout {
-  cursor: pointer;
-  position: fixed;
-  top: 20px;
-  right: 20px;
-}
-/* año 2023 */
-.rejilla h3{
-  position: fixed;
-  top: 20px;
-  right: 145px;
-}
-/* puntico verde */
-.rejilla img{ 
-  position: fixed;
-  top: 43px;
-  left: 50px;
-  width: 10px;
-}
-.logout:hover .CerrarSesion {  
-  visibility: visible;
-  transition-delay: 0.3s;
-}
-.CerrarSesion{
-  visibility: hidden;
-  padding: 0.25em 0.5em;
-  background-color: gray;
-  color: #fff;
-  text-align: center;
-  border-radius: 0.25em;
-  position: absolute;
-  z-index: 1;
-  top: 110%;
-  right: -10px;
-  transition-property: visibility;
-  transition-delay: 0s;
-}
+  .logout {
+    cursor: pointer;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+  }
 
-.rejilla h4{
-  position: fixed;
-  top: 17px;
-  left: 5%;
-}
+  /* año 2023 */
+  .rejilla h3 {
+    position: fixed;
+    top: 20px;
+    right: 145px;
+  }
 
-.avatar {
-  position: fixed;
-  top: 13px;
-  left: auto;
-}
+  /* puntico verde */
+  .rejilla img {
+    position: fixed;
+    top: 43px;
+    left: 50px;
+    width: 10px;
+  }
 
-.emailAvatar {
-  visibility: hidden;
-  padding: 0.25em 0.5em;
-  background-color: gray;
-  color: #fff;
-  text-align: center;
-  border-radius: 0.25em;
-  position: absolute;
-  z-index: 1;
-  top: 110%;
-  left: auto;
-  transition-property: visibility;
-  transition-delay: 0s;
-}
+  .logout:hover .CerrarSesion {
+    visibility: visible;
+    transition-delay: 0.3s;
+  }
 
-.avatar:hover .emailAvatar {
-  visibility: visible;
-  transition-delay: 0.3s;
-}
+  .CerrarSesion {
+    visibility: hidden;
+    padding: 0.25em 0.5em;
+    background-color: gray;
+    color: #fff;
+    text-align: center;
+    border-radius: 0.25em;
+    position: absolute;
+    z-index: 1;
+    top: 110%;
+    right: -10px;
+    transition-property: visibility;
+    transition-delay: 0s;
+  }
+  .copyRightRejilla{
+   
+    position: absolute;    
+  }
+  .bienvenidoRejilla h4{
+    /* border: solid 2px blue;    */
+    font-size: medium;
+  }
 
-h1 {
-  margin-top: 30%;
-}
+  .avatar {
+    position: fixed;
+    top: 13px;
+    left: auto;
+  }
 
-.cargando {
-  left: 36%;
-  position: absolute;
-  top: 35%;
-  width: 35%;
-}
+  .emailAvatar {
+    visibility: hidden;
+    padding: 0.25em 0.5em;
+    background-color: gray;
+    color: #fff;
+    text-align: center;
+    border-radius: 0.25em;
+    position: absolute;
+    z-index: 1;
+    top: 110%;
+    left: auto;
+    transition-property: visibility;
+    transition-delay: 0s;
+  }
 
-.spinner {
-  margin-left: 15%;
-  margin-right: 15%;
-}
+  .avatar:hover .emailAvatar {
+    visibility: visible;
+    transition-delay: 0.3s;
+  }
 
-.borrarProgramacion {
-  cursor: pointer;
-  position: fixed;
-  top: 18px;
-  right: 60px;
-}
+  h1 {
+    margin-top: 30%;
+  }
 
-.borrarProgramacionTexto {
-  visibility: hidden;
-  border-radius: 0.25em;
-  top: 38px;
-  right: -40px;
-  padding: 0.25em 0.5em;
-  background-color: gray;
-  color: #fff;
-  text-align: center;
-  position: absolute;
-  transition-property: visibility;
-  transition-delay: 0s;
-}
+  .cargando {
+    left: 36%;
+    position: absolute;
+    top: 35%;
+    width: 35%;
+  }
 
-.borrarProgramacion:hover .borrarProgramacionTexto {
-  visibility: visible;
-  transition-delay: 0.3s;
-}
+  .spinner {
+    margin-left: 15%;
+    margin-right: 15%;
+  }
 
-.HelpIcon {
-  cursor: pointer;
-  position: fixed;
-  top: 18px;
-  right: 100px;
-}
+  .borrarProgramacion {
+    cursor: pointer;
+    position: fixed;
+    top: 18px;
+    right: 60px;
+  }
 
-.HelpIconText {
-  visibility: hidden;
-  padding: 0.25em 0.5em;
-  background-color: gray;
-  color: #fff;
-  border-radius: 0.25em;
-  position: absolute;
-  z-index: 1;
-  top: 38px;
-  right: -14px;
-  text-align: justify;
-  transition-property: visibility;
-  transition-delay: 0s;
-  width: 350px;
-}
+  .borrarProgramacionTexto {
+    visibility: hidden;
+    border-radius: 0.25em;
+    top: 38px;
+    right: -40px;
+    padding: 0.25em 0.5em;
+    background-color: gray;
+    color: #fff;
+    text-align: center;
+    position: absolute;
+    transition-property: visibility;
+    transition-delay: 0s;
+  }
 
-.HelpIcon img {
-  display: block;
-  margin-top: 5px;
-  margin-bottom: 5px;
-  margin-left: auto;
-  margin-right: auto;
+  .borrarProgramacion:hover .borrarProgramacionTexto {
+    visibility: visible;
+    transition-delay: 0.3s;
+  }
 
-}
+  .HelpIcon {
+    cursor: pointer;
+    position: fixed;
+    top: 18px;
+    right: 100px;
+  }
 
-.HelpIcon:hover .HelpIconText {
-  visibility: visible;
-  transition-delay: 0.3s;
+  .HelpIconText {
+    visibility: hidden;
+    padding: 0.25em 0.5em;
+    background-color: gray;
+    color: #fff;
+    border-radius: 0.25em;
+    position: absolute;
+    z-index: 1;
+    top: 38px;
+    right: -14px;
+    text-align: justify;
+    transition-property: visibility;
+    transition-delay: 0s;
+    width: 350px;
+  }
+
+  .HelpIcon img {
+    display: block;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+
+  }
+
+  .HelpIcon:hover .HelpIconText {
+    visibility: visible;
+    transition-delay: 0.3s;
+  }
+
+  footer {
+    font-size: 12px;
+    margin-left: 45%;
+    position: fixed;
+  }
+
+  .CopyrightIcon {
+    font-size: 15px;
+  }
 }
-footer{    
-  font-size: 12px;
-  margin-left: 45%;    
-  position: fixed;
+@media(min-width: 576px) {
+  .bienvenidoRejilla h4{
+    /* border: solid 2px blue;    */
+    font-size: x-large;
+    left: 12%;
+    position: absolute;
+    top: 9%;
+    
+  }
+  .rejilla {
+    margin-top: 11%;
+    margin-left: 1%;
+  }
 }
-.CopyrightIcon{
-  font-size: 15px;
+@media(min-width: 768px) {
+  .bienvenidoRejilla h4{
+    /* border: solid 2px blue;    */
+    font-size: xx-large;
+    left: 12%;
+    position: absolute;
+    top: 11%;    
+  }
+  .copyRightRejilla{
+   left: -17%;
+  }
+  .avatar {    
+    top: 1%;    
+  }
 }
